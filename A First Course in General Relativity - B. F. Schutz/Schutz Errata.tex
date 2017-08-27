@@ -1,9 +1,39 @@
 \documentclass{report}
+\usepackage[paperwidth=6in, paperheight=8in, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage{concmath}
+\usepackage[T1]{fontenc}
+
+%MF mode dpdfezzz is for 8000dpi
+\pdfpkmode{dpdfezzz}
+\pdfpkresolution=8000
+
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{tensor}
-\DeclareMathOperator{\sech}{sech}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage[none]{hyphenat}
+\usepackage{tkz-euclide}
+\usepackage{tikz}
+
+\usepackage{etoolbox} % provides \patchcmd macro
+\makeatletter % modify the "headings" page style
+\patchcmd{\ps@headings}{{\slshape\rightmark}\hfil\thepage}{\thepage\hfil}{}{}
+\makeatother
+\pagestyle{headings}  % load the (re-defined) "headings" page style (default: "plain")
+
+\usetikzlibrary{calc,arrows}
+\usetkzobj{all}
+\theoremstyle{definition}
+
+\usetikzlibrary{decorations.markings}
+
+\usepackage{color}
+\definecolor{mygrey}{gray}{0.1}
+\color{mygrey}
+
 \DeclareMathOperator{\arctanh}{arctanh}
 
 \begin{document}
