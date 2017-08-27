@@ -1,0 +1,174 @@
+% T. Padmanabhan Solutions Manual
+
+\documentclass{report}
+\usepackage[paperwidth=5.9in, paperheight=9in, top = 20mm, bottom = 15mm, left=8mm, right = 8mm]{geometry}
+\usepackage{concmath}
+\usepackage[T1]{fontenc}
+
+%MF mode dpdfezzz is for 8000dpi
+\pdfpkmode{dpdfezzz}
+\pdfpkresolution=8000
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{tensor}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage[none]{hyphenat}
+\usepackage{tkz-euclide}
+\usepackage{tikz}
+
+\usepackage{etoolbox} % provides \patchcmd macro
+\makeatletter % modify the "headings" page style
+\patchcmd{\ps@headings}{{\slshape\rightmark}\hfil\thepage}{\thepage\hfil}{}{}
+\makeatother
+\pagestyle{headings}  % load the (re-defined) "headings" page style (default: "plain")
+
+\usetikzlibrary{calc,arrows}
+\usetkzobj{all}
+\DeclareMathOperator{\arctanh}{arctanh}
+\theoremstyle{definition}
+
+\usetikzlibrary{decorations.markings}
+
+\usepackage{color}
+\definecolor{mygrey}{gray}{0.1}
+\color{mygrey}
+
+\begin{document}
+
+\title{Solutions to \\ Gravitation: Foundations and Frontiers \\ by T. Padmanabhan}
+
+\author{Arjit Seth}
+
+\maketitle
+
+\newtheorem{chapter1}{Problem}
+\newcounter{subpart1}[chapter1]
+
+\chapter{Special relativity}
+
+\begin{chapter1}\label{prob:1}
+	Perpendicular:
+	\begin{gather*}
+		ct' = \sqrt{c^2 - v^2}t \\
+		t = \frac{t'}{\sqrt{1 - v^2/c^2}} = \gamma t'
+	\end{gather*}
+	Parallel: Using proper time -
+	\begin{gather*}
+		\dd{t} = \gamma\dd{\tau} \\ 
+		\frac{L'}{c+v} + \frac{L'}{c-v} = \gamma\frac{2L}{c} \\
+		L'\frac{2c}{c^2 - v^2}  = \gamma\frac{2L}{c} \\
+		L' = \frac{1-v^2/c^2}{\sqrt{1-v^2/c^2}} = \frac{L}{\gamma} \\
+	\end{gather*}
+\end{chapter1}
+
+\begin{chapter1}\label{prob:2}
+	Superluminal motion:
+	\begin{gather*}
+		\Delta t' = t_2' - t_1' \\
+		t_1' - t_1 \approx \frac{v}{c}\Delta t \cos\theta \\
+		t_2' - t_1 = L/c \\
+		\Delta t' = \Delta t\pqty{1-(v/c)\cos\theta} \\
+		v_{app} = v\Delta t \sin\theta = \frac{v\sin\theta}{1-(v/c)\cos\theta}
+	\end{gather*}
+\end{chapter1}
+
+\begin{chapter1}\label{prob:3}
+
+\end{chapter1}
+
+\begin{chapter1}\label{prob:4}
+	\stepcounter{subpart1}
+	Using a Lorentz transformation on the `time' component of the four-vector $k^a = (\omega,\omega{\bf n}/c)$:
+	\begin{gather*}
+	(\alph{subpart1}) \hspace{10 pt}
+		\omega_R = \gamma\pqty{\omega_L - \frac{\omega_Lv\cos\theta}{c}} = \gamma\omega_L\pqty{1-(v/c)\cos\theta} \\
+		REDO = \frac{\gamma\omega_L\pqty{\cos\theta - (v/c)}}{\gamma\omega_L\pqty{1-(v/c)\cos\theta_L}}
+	\end{gather*}
+	\stepcounter{subpart1}
+	\stepcounter{subpart1}
+	\begin{gather*}
+		\int\dd(\cos\theta)\dd{\phi} = -\int\sin\theta\dd{\theta}\dd{\phi} = -\dd{\Omega} \\
+		\dd(\cos\theta_R) = \bqty{\frac{(v/c)\bqty{\cos\theta_L - (v/c)}}{\bqty{1-(v/c)\cos\theta_L}^2} + \frac{1}{\bqty{1-(v/c)\cos\theta_L}}}\dd(\cos\theta_L) \\
+		\dd{\Omega'} = \frac{1}{\gamma^2}\frac{\dd{\Omega}}{\bqty{1-(v/c)\cos\theta}^2}
+	\end{gather*}
+\end{chapter1}
+
+\begin{chapter1}\label{prob:5}
+	\begin{gather*}
+		A^{i'k'} = L^{k'}_k L^{i'}_i A^{ik} = \pdv{x^{k'}}{x^k}\pdv{x^{i'}}{x^i}A^{ik}
+	\end{gather*}
+	If $A^{ik} = -A^{ki}$ then:
+	\begin{gather*}
+		A^{k'i'} = - A^{i'k'} ?
+	\end{gather*}
+\end{chapter1}
+
+\begin{chapter1}\label{prob:6}
+
+\end{chapter1}
+
+\begin{chapter1}\label{prob:7}
+	\begin{gather*}
+		\eta_{ij}x^{i}x^{j} = -t^2 + x^2 + y^2 + z^2 = 0 
+	\end{gather*}
+\end{chapter1}
+
+\begin{chapter1}\label{prob:8}
+	
+\end{chapter1}
+
+\begin{chapter1}\label{prob:9}
+	\begin{gather*}
+		\mathcal A = \int_{t_2}^{t_1}\dd{t}\,\bqty{p\dot q - H(p,q)} \\
+		\delta\mathcal A = \int_{t_2}^{t_1} \dd{t}\, \bqty{\dot q\,\delta p + p\,\delta\dot q  - \pdv{H}{p}\delta p - \pdv{H}{q}\delta q} = 0
+	\end{gather*}
+	Using $\delta\dot q = \dot\dd(\delta q)$ and integrating by parts:
+	\begin{gather*}
+		\int_{t_2}^{t_1} \dd{t}\, p\,\delta \dot q = \cancel{\left|p\,\delta q\right|_{t_1}^{t_2}} - \int_{t_2}^{t_1} \dd{t}\,\dot p\, \delta q  \\
+		\int_{t_2}^{t_1} \dd{t}\, \bqty{\pqty{\dot q -\pdv{H}{p}}\,\delta p - \pqty{\dot p + \pdv{H}{q}}\delta q} = 0
+	\end{gather*}
+	Since $\delta q = 0 $ at the endpoints, the second term is zero; therefore, the first term in parentheses should be zero, leading to the equations of motion:
+	\begin{gather*}
+		\dot q = \pdv{H}{p},\;\;\;\dot p = -\pdv{H}{q} 	
+	\end{gather*} 
+\end{chapter1}
+
+\begin{chapter1}\label{prob:10}
+	\begin{gather*}
+		\mathcal A = \int_{\lambda_1}^{\lambda_2} \dd{\lambda}\, \bqty{p_a \dot x^a - \frac{1}{2}C\pqty{\frac{H}{m} + m}}		
+	\end{gather*}
+
+\end{chapter1}
+
+\begin{chapter1}\label{prob:11}
+
+\end{chapter1}
+
+\newtheorem{chapter2}{Problem}
+\newcounter{subpart2}[chapter2]
+
+\chapter{Scalar and electromagnetic fields in special relativity}
+\begin{chapter2}\label{prob:1}
+	
+\end{chapter2}
+
+\begin{chapter2}\label{prob:2}
+	
+\end{chapter2}
+
+\begin{chapter2}\label{prob:3}
+	
+\end{chapter2}
+
+\begin{chapter2}\label{prob:4}
+	
+\end{chapter2}
+
+\begin{chapter2}\label{prob:5}
+	
+\end{chapter2}
+\end{document}

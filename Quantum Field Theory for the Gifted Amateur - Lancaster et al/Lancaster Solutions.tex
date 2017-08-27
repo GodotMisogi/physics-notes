@@ -1,0 +1,823 @@
+% Lancaster et. al. Solutions Manual
+
+\documentclass{report}
+\usepackage[paperwidth=6in, paperheight=8in, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage{concmath}
+\usepackage[T1]{fontenc}
+
+%MF mode dpdfezzz is for 8000dpi
+\pdfpkmode{dpdfezzz}
+\pdfpkresolution=8000
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{tensor}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage[none]{hyphenat}
+\usepackage{tkz-euclide}
+\usepackage{tikz}
+
+\usepackage{etoolbox} % provides \patchcmd macro
+\makeatletter % modify the "headings" page style
+\patchcmd{\ps@headings}{{\slshape\rightmark}\hfil\thepage}{\thepage\hfil}{}{}
+\makeatother
+\pagestyle{headings}  % load the (re-defined) "headings" page style (default: "plain")
+
+\usetikzlibrary{calc,arrows}
+\usetkzobj{all}
+\DeclareMathOperator{\arctanh}{arctanh}
+\theoremstyle{definition}
+
+\usetikzlibrary{decorations.markings}
+
+\usepackage{color}
+\definecolor{mygrey}{gray}{0.1}
+\color{mygrey}
+
+\begin{document}
+
+\title{Solutions to \\Quantum Field Theory for the Gifted Amateur \\ by Tom Lancaster, et al}
+
+\author{Arjit Seth}
+
+\maketitle
+
+\newtheorem{chapter1}{Problem}
+\newcounter{subpart1}[chapter1]
+
+\chapter{Lagrangians}
+\begin{chapter1}\label{prob:1}
+	\stepcounter{subpart1}
+	\begin{gather*}
+		(\alph{subpart1}) \hspace{10 pt}
+			t = \frac{\sqrt{x^2 + h_1^2}}{v_1} + \frac{\sqrt{(l-x)^2+h_2^2}}{v_2} = \frac{\sqrt{x^2 + h_1^2}}{c/n_1} + \frac{\sqrt{(l-x)^2+h_2^2}}{c/n_2} \\
+			\dv{t}{x} = \frac{x}{c/n_1\sqrt{x^2 + h_1^2}} - \frac{(l-x)}{c/n_2\sqrt{(l-x)^2 + h_2^2}} = 0 \\
+			n_1\sin\theta = n_2\sin\phi
+	\end{gather*}
+\end{chapter1}
+\begin{chapter1}\label{prob:2}
+	\begin{gather*}
+		\fdv{H[f]}{f(z)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int G(x,y)[f(y) + \epsilon\delta(y-z)]\dd{y} - \int G(x,y)f(y)\dd{y}} = G(x,z) \\
+		\fdv{I[f^3]}{f(x_0)} =  \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int_{-1}^1 \bqty{f(x) + \epsilon\delta(x-x_0)}^3\dd{x} -\int_{-1}^1 [f(x)]^3 \dd{x}} =  \\
+		\frac{\delta^2 I[f^3]}{\delta f(x_0)\delta f(x_1)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int} \\
+		\fdv{J[f]}{f(x)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int \pqty{\pdv{y}[f(y) + \epsilon\delta(y-x)]}^2 \dd{y} - \int \pqty{\pdv{f}{y}}^2 \dd{y}} \\
+		= \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int \bqty{f'(y) + \epsilon\delta'(y-x)}^2 \dd{y} - \int \pqty{\pdv{f}{y}}^2 \dd{y}} \\
+ 	\end{gather*}
+\end{chapter1}
+\begin{chapter1}\label{prob:3}
+	\begin{gather*}
+		\fdv{G[f]}{f(x)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int \bqty{g(y,f) + \pdv{g(y,f)}{f}\epsilon\delta(y-x)}\dd{y} - \int g(y,f)\dd{y}} = \pdv{g(x,f)}{f(x)}
+ 	\end{gather*}
+
+\end{chapter1}
+
+\begin{chapter1}\label{prob:4}
+	\begin{gather*}
+		\fdv{\phi(x)}{\phi(y)} = \lim_{\epsilon \to 0} \frac{\phi(x) + \epsilon\delta(x-y) - \phi(x)}{\epsilon} = \delta(x-y) \\
+		\fdv{\dot{\phi}(t)}{\phi(t_0)} = \lim_{\epsilon\to 0} \frac{\dv{t}[\phi(t) + \epsilon\delta(t - t_0)] - \dot{\phi}(t)}{\epsilon} = \dv{t}\delta(t-t_0) 
+	\end{gather*}
+\end{chapter1}
+
+\begin{chapter1}\label{prob:5}
+	\begin{gather*}
+		S = \int T - V \;\dd^3{x} = \frac{1}{2}\int \rho\pqty{\pdv{\psi}{t}}^2 - \mathcal{T}(\nabla\psi)^2\;\dd^3{x} \\
+		\fdv{S}{\psi} = \lim_{\epsilon \to 0}\frac{1}{2\epsilon}[\int\rho\pqty{\pdv{t}[\psi + \epsilon\delta(t-t_0)]}^2 - \mathcal{T}\pqty{\nabla[\psi + \epsilon\delta({\bf x} - {\bf y})]}^2 \;\dd^3{x} \\ 
+		- \int \rho\pqty{\pdv{\psi}{t}}^2 - \mathcal{T}(\nabla\psi)^2\;\dd^3{x}] = \\
+		\int\bqty{\rho\pdv{t}\delta(t-t_0)\pdv{\psi}{t} - \mathcal{T}\nabla\delta({\bf x}-{\bf y})\nabla\psi}\;\dd^3{x} = 0 \\
+		\nabla^2 \psi = \frac{1}{\nu^2}\pdv[2]{\psi}{t},\;\;\nu = \sqrt{\frac{\cal{T}}{\rho}}    
+	\end{gather*}
+\end{chapter1}
+
+\begin{chapter1}\label{prob:6}
+	
+\end{chapter1}
+
+\newtheorem{chapter2}{Problem}
+\newcounter{subpart2}[chapter2]
+
+\chapter{Simple harmonic oscillators}
+
+\begin{chapter2}\label{prob:1}
+	\begin{gather*}
+		[\hat{a}, \hat{a}^{\dagger}] = \frac{m\omega}{2\hbar}\pqty{\hat{x} + \frac{i}{m\omega}\hat{p}}\pqty{\hat{x} - \frac{i}{m\omega}\hat{p}} - \frac{m\omega}{2\hbar}\pqty{\hat{x} - \frac{i}{m\omega}\hat{p}}\pqty{\hat{x} + \frac{i}{m\omega}\hat{p}} \\ 
+		= \frac{1}{2i\hbar}\pqty{[\hat{x},\hat{p}] + [\hat{x},\hat{p}]} = 1
+	\end{gather*}
+\end{chapter2}
+
+\begin{chapter2}\label{prob:2}
+	\begin{gather*}
+		\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2}m\omega^2\hat{x}^2 + \lambda x^4  \\
+		\hat{H} = \lambda\bqty{\hat{x}^4 + \frac{m\omega^2}{2\lambda}\hat{x}^2 + \frac{\hat{p}^2}{2m\lambda}} \\
+		% \hat{H} = \lambda\bqty{\pqty{\hat{x}^2 + \frac{\frac{m\omega^2}{2\lambda} - \sqrt{\pqty{\frac{m\omega^2}{2\lambda}}^2 - \frac{2\hat{p}^2}{m\lambda}}}{2}}\pqty{\hat{x}^2 + \frac{\frac{m\omega^2}{2\lambda} + \sqrt{\pqty{\frac{m\omega^2}{2\lambda}}^2 - \frac{2\hat{p}^2}{m\lambda}}}{2}}}
+	\end{gather*}
+\end{chapter2}
+
+\begin{chapter2}\label{prob:3}
+	\begin{gather*}
+		\hat{x}_j = \frac{1}{\sqrt{N}}\sum_{k}\tilde{x}_k e^{ikja}, \;\; \hat{x}_k = \sqrt{\frac{\hbar}{2m\omega_k}}\pqty{\hat{a}_k + \hat{a}_{-k}^{\dagger}} \\
+		\hat{x}_j = \frac{1}{\sqrt{N}}\sum_{k} \sqrt{\frac{\hbar}{2m\omega_k}}\pqty{\hat{a}_k + \hat{a}_{-k}^{\dagger}}e^{ikja} = \frac{1}{\sqrt{N}}\sqrt{\frac{h}{m}}\sum_{k}\frac{1}{\sqrt{2\omega_k}}\pqty{\hat{a}_k e^{ikja}+ \hat{a}_{k}^{\dagger}e^{-ikja}}
+	\end{gather*}
+\end{chapter2}
+
+\begin{chapter2}\label{prob:4}
+	\begin{gather*}
+		\sqrt{\frac{m\omega}{2\hbar}}\pqty{\hat{x} + \frac{i}{m\omega}\hat{p}} \ket{0}= 0 \\
+		\mel{x}{\hat{x}}{0} + \frac{i}{m\omega}\mel{x}{\hat{p}}{0} = 0 \\
+		\pqty{x + \frac{\hbar}{m\omega}\dv{x}}\ip{x}{0} = 0 \\
+		\pqty{\dv{x} + \frac{m\omega}{\hbar}x}\ip{x}{0} = 0 \\
+	\end{gather*}
+	This is easily solved by separation of variables. Attempting a series solution for practice:
+	\begin{gather*}
+		\ip{x}{0} = \sum_{n=0}^{\infty} a_n x^n \\
+		\sum_{n=0}^{\infty}na_{n} x^{n-1} + \sum_{n=0}^{\infty}\frac{m\omega}{\hbar}a_{n}x^{n+1} = 0 \\
+		\sum_{n=0}^{\infty}(n+2)a_{n+2} x^{n+1} + \sum_{n=0}^{\infty}\frac{m\omega}{\hbar}a_n x^{n+1} = 0 \\
+		a_{n+2} = -\frac{m\omega}{\hbar(n+2)}a_{n},\;\;a_0 = A, \; a_1 = 0 \\
+		\ip{x}{0} = A\bqty{1 + \pqty{-\frac{m\omega}{2\hbar}}x^2 + \frac{1}{2}\pqty{-\frac{m\omega}{2\hbar}}^2 x^4 + \frac{1}{6}\pqty{-\frac{m\omega}{2\hbar}}^3 x^6 + ...} \\
+		\ip{x}{0} = A\exp(-\frac{m\omega x^2}{2\hbar}) \\
+		A = 1/\left|\exp(-\frac{m\omega x^2}{2\hbar})\right| \\
+		A = 1/\sqrt{\int_{-\infty}^{\infty}\exp(2\frac{m\omega}{2\hbar}x^2)} = \pqty{\frac{m\omega}{\pi \hbar}}^{1/4}\\
+		\ip{x}{0} = \pqty{\frac{m\omega}{\pi \hbar}}^{1/4}\exp(-\frac{m\omega x^2}{2\hbar})
+	\end{gather*}
+\end{chapter2}
+
+
+\newtheorem{chapter3}{Problem}
+\newcounter{subpart3}[chapter3]
+\chapter{Occupation number representation}
+\begin{chapter3}
+	\stepcounter{subpart3}
+	\begin{gather*}
+		(\alph{subpart3}) \hspace{10pt}
+		\frac{1}{\cal{V}}\sum_{\bf pq} e^{i\pqty{\bf p\cdot x - q\cdot y}} \bqty{\hat{a}_{\bf p}, \hat{a}_{\bf q}^{\dagger}} = \frac{1}{\cal{V}}\sum_{\bf pq} e^{i\pqty{\bf p\cdot x - q\cdot y}}\delta_{\bf pq} = \frac{1}{\cal{V}}\sum_{\bf p}e^{i\bf p\cdot\pqty{x-y}} = \delta^{(3)}(\bf x - y)
+	\end{gather*}
+\end{chapter3}
+
+\begin{chapter3}
+	\begin{gather*}
+		\bqty{\hat{a},\pqty{\hat{a}^{\dagger}}^n} = \bqty{\hat{a}\pqty{\hat{a}^{\dagger}}^n - \pqty{\hat{a}^{\dagger}}^n\hat{a}} \\
+		= \bqty{(1+\hat{a}^{\dagger}\hat{a})\pqty{\hat{a}^{\dagger}}^{n-1} - \pqty{\hat{a}^{\dagger}}^{n-1}\pqty{\hat{a}^{\dagger}\hat{a}}} = \bqty{\pqty{\hat{a}^{\dagger}}^{n-1} - \bqty{\hat{a}^{\dagger}\hat{a},\pqty{\hat{a}^{\dagger}}^{n-1}}}		
+	\end{gather*}	
+\end{chapter3}
+
+\begin{chapter3}
+	\begin{gather*}
+		\hat{a}_i^{\dagger} = \sqrt{\frac{m\omega}{2\hbar}}\pqty{\hat{x}_i - \frac{i}{m\omega}\hat{p}_i} \\
+		\bqty{\hat{a}_i,\hat{a}_j^{\dagger}} = \frac{m\omega}{2\hbar}\bqty{\pqty{\hat{x}_i + \frac{i}{m\omega}\hat{p}_i}\pqty{\hat{x}_j - \frac{i}{m\omega}\hat{p}_j} - \pqty{\hat{x}_j - \frac{i}{m\omega}\hat{p}_j}\pqty{\hat{x}_i + \frac{i}{m\omega}\hat{p}_i}} \\
+		= \frac{m\omega}{2\hbar}\pqty{\bqty{\hat{x}_i,\hat{x}_j} + \frac{1}{m^2\omega^2}\bqty{\hat{p}_i,\hat{p}_j} - \frac{i}{m\omega}\pqty{\bqty{\hat{x}_j.\hat{p}_i} + \bqty{\hat{x}_i,\hat{p}_j}}} = \delta_{ij} \\
+		\hat{H} = \frac{1}{2m}\\
+		\hat{L}^i = -i\hbar\epsilon^{ijk}\hat{a}^{\dagger}_j\hat{a}_k		
+	\end{gather*}
+\end{chapter3}
+
+\newtheorem{chapter4}{Problem}
+\newcounter{subpart4}[chapter4]
+\chapter{Making Second Quantization Work}
+
+\begin{chapter4}
+	\begin{gather*}
+		\bqty{\hat{\psi}\pqty{\bf x}, \hat{\psi}^{\dagger}\pqty{\bf y}}_{\zeta} = \delta^{\pqty{3}}\pqty{\bf x - y},\;\;\; \bqty{\hat{\psi}\pqty{\bf x}, \hat{\psi}\pqty{\bf y}}_{\zeta} = 0 \\
+		\hat{\rho}\pqty{\bf x}\hat{\rho}\pqty{\bf y} = \hat{\psi}^{\dagger}\pqty{\bf x}\hat{\psi}\pqty{\bf x}\hat{\psi}^{\dagger}\pqty{\bf y}\hat{\psi}\pqty{\bf y} \\
+		= -\zeta\hat{\psi}^{\dagger}\pqty{\bf x}\hat{\psi}^{\dagger}\pqty{\bf y}\hat{\psi}\pqty{\bf x}\hat{\psi}\pqty{\bf y} + \delta^{\pqty{3}}\pqty{\bf x - y}\hat{\psi}^{\dagger}\pqty{\bf x}\hat{\psi}\pqty{\bf y} \\
+		= -\zeta^2\hat{\psi}^{\dagger}\pqty{\bf x}\hat{\psi}^{\dagger}\pqty{\bf y}\hat{\psi}\pqty{\bf y}\hat{\psi}\pqty{\bf x} + \delta^{\pqty{3}}\pqty{\bf x - y}\hat{\psi}^{\dagger}\pqty{\bf x}\hat{\psi}\pqty{\bf y}
+	\end{gather*}
+	So $\zeta = \pm 1$ yields the same result regardless of bosons or fermions.
+\end{chapter4}
+
+\begin{chapter4}
+	\begin{gather*}
+		\hat{\rho}_1\pqty{\bf x - y} = \expval{\hat{\psi}^{\dagger}\pqty{\bf x}\hat{\psi}\pqty{\bf y}} \\
+		= \frac{1}{\cal{V}}\sum_{\bf p}\hat{a}_{\bf p}^{\dagger}e^{-i\bf p\cdot x}\sum_{\bf q}\hat{a}_{\bf q}e^{i\bf q\cdot y} = \frac{1}{\cal{V}}\sum_{\bf pq}\hat{a}_{\bf p}^{\dagger}\hat{a}_{\bf q}e^{-i\pqty{\bf p\cdot x - q\cdot y}}
+	\end{gather*}
+\end{chapter4}
+
+\begin{chapter4}
+	\begin{gather*}
+		|\hat{H} - \lambda\hat{I}| = \begin{vmatrix}
+			U - \lambda & -t & -t & 0 \\
+			-t & -\lambda & 0 & -t \\
+			-t & 0 & -\lambda & -t \\
+			0 & -t & -t & U - \lambda
+		\end{vmatrix}
+		= 
+	\end{gather*}	
+\end{chapter4}
+
+\newtheorem{chapter5}{Problem}
+\newcounter{subpart5}[chapter5]
+\chapter{Continuous systems}
+
+\begin{chapter5}
+	\begin{gather*}
+		\int_a^b \dd{s} = \int_a^b \sqrt{1-\frac{{\bf v}^2}{c^2}} \dd{t} = \int_a^b \frac{\dd{t}}{\gamma} = \int_a^b L \dd{t} \\
+		\pdv{L^2}{\bf v} = \frac{2\bf v}{c^2} \\
+		\dv{t}\pqty{\pdv{L^2}{\bf v}} - \pdv{L^2}{\bf x} = \frac{2\dot{\bf v}}{c^2} = 0
+	\end{gather*}
+	Since the acceleration is zero, the velocity is constant. Hence a straight world-line path does minimise the interval.
+\end{chapter5}
+
+\begin{chapter5}
+	\begin{gather*}
+		L = \frac{-mc^2}{\gamma} + q{\bf A}\cdot{\bf v} - qV \\
+		\nabla{L} = q\bqty{\nabla\pqty{{\bf A}\cdot {\bf v}} - \nabla V} \\
+		= q\bqty{\cancel{\bf(A \cdot \nabla)v} + \cancel{\bf(v \cdot \nabla)A} + {\bf v \times (\nabla \times A)} + \cancel{\bf A \times (\nabla \times v)} - q\nabla V} \\
+		= q\bqty{\bf E + v \times B},\;\;\because {\bf E} = -q\nabla V, \; \bf B = \nabla \times A\\
+		\pdv{L}{\bf v} = -\frac{mc^2}{2\sqrt{1- \frac{{\bf v}^2}{c^2}}}\pqty{-\frac{2\bf v}{c^2}} = \gamma m {\bf v} \\
+		\dv{t}\pdv{L}{\bf v} = \nabla L \longrightarrow \dv{t}(\gamma m \bf v) = q\bqty{\bf E + v \times B}
+	\end{gather*}
+\end{chapter5}
+
+\begin{chapter5}
+	\begin{gather*}
+		L = \frac{-mc^2}{\gamma} + q{\bf A}\cdot{\bf v} - qV \approx \frac{1}{2}m{\bf v}^2 + q{\bf A}\cdot{\bf v} - qV \\
+		{\bf p} = \pdv{L}{\bf v} = m{\bf v} + q{\bf A}
+	\end{gather*}
+	Finding the Hamiltonian is equivalent to finding the energy in terms of momentum:
+	\begin{gather*}
+		H = {\bf p\cdot v} - L = m{\bf v}^2 + q{\bf A \cdot v} - L \\ 
+		= mc^2 + \frac{1}{2}m{\bf v}^2 + qV = mc^2 + \frac{1}{2m}({\bf p} - q{\bf A})^2 + qV, \;\;\;{\bf v} = \frac{{\bf p} - q{\bf A}}{m}
+	\end{gather*}
+\end{chapter5}
+
+\newtheorem{chapter6}{Problem}
+\newcounter{subpart6}[chapter6]
+\chapter{A first stab at relativistic quantum mechanics}
+
+\begin{chapter6}
+	\begin{gather*}
+		\mathcal{L} = \frac{1}{2}\pqty{\partial_{\mu}\phi}^2 - \frac{1}{2}m^2\phi^2 \\
+		\pdv{\mathcal{L}}{\phi} = -m^2\phi, \;\;\; \pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi}} = \partial^{\mu}\phi \\
+		\pdv{\mathcal{L}}{\phi}-\partial_{\mu}\pqty{\pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi}}} = 0 \\
+		\pqty{\partial^2 + m^2}\phi = 0 \\
+		\pi = \pdv{\mathcal{L}}{\dot{\phi}} = \partial^0 \phi = \dot{\phi} \\
+		\mathcal{H} = \pi\dot{\phi} - \mathcal{L} = \frac{1}{2}\pi^2 + \frac{1}{2}\pqty{\nabla{\phi}}^2 + \frac{1}{2}m^2\phi^2 \\
+	\end{gather*}
+\end{chapter6}
+
+\newtheorem{chapter7}{Problem}
+\newcounter{subpart7}[chapter7]
+\chapter{Examples of Lagrangians, or how to write down a theory}
+
+\begin{chapter7}
+	\begin{gather*}
+		\mathcal{L} = \frac{1}{2}\pqty{\partial_{\mu}\phi}^2 - \frac{1}{2}m^2\phi^2 - \sum_{n=1}^{\infty}\lambda_n \phi^{2n+2}\\
+		\pdv{\mathcal{L}}{\phi} = -m^2\phi - \sum_{n=1}^{\infty}\lambda_n \pqty{2n+2}\phi^{2n+1} \\
+		\pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi}} = \partial^{\mu}\phi \\
+		\pdv{\mathcal{L}}{\phi}-\partial_{\mu}\pqty{\pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi}}} = 0 \\
+		\partial_{\mu}\partial^{\mu}\phi + m^2\phi + \sum_{n=1}^{\infty}\lambda_n \pqty{2n+2}\phi^{2n+1} = 0 \\
+		\pqty{\partial^2 + m^2}\phi + \sum_{n=1}^{\infty}\lambda_n \pqty{2n+2}\phi^{2n+1} = 0
+	\end{gather*}
+\end{chapter7}
+
+\begin{chapter7}
+	\begin{gather*}
+		\mathcal{L} = \frac{1}{2}\bqty{\partial_{\mu}\phi(x)}^2 - \frac{1}{2}m^2\bqty{\phi(x)}^2 + J(x)\phi(x)\\
+		\pdv{\mathcal{L}}{\phi(x)} = -m^2\phi(x) +J(x) \\
+		\pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi(x)}} = \partial^{\mu}\phi(x) \\
+		\pdv{\mathcal{L}}{\phi(x)}-\partial_{\mu}\pqty{\pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi(x)}}} = 0 \\
+		\partial_{\mu}\partial^{\mu}\phi(x) + m^2\phi(x) - J(x) = 0 \\
+		\pqty{\partial_{\mu}\partial^{\mu} + m^2}\phi(x) = J(x)
+	\end{gather*}
+\end{chapter7}
+
+\begin{chapter7}
+	\begin{gather*}
+		\mathcal{L} = \frac{1}{2}\pqty{\partial_{\mu}\phi_1}^2 - \frac{1}{2}m^2\phi_1^2 + \frac{1}{2}\pqty{\partial_{\mu}\phi_2}^2 - \frac{1}{2}m^2\phi_2^2 - g\pqty{\phi_1^2 + \phi_2^2}^2 \\
+		\pdv{\mathcal{L}}{\phi_1} = -m^2\phi_1 - 4g\phi_1\pqty{\phi_1^2 + \phi_2^2} = 0, \;\;\; \pdv{\mathcal{L}}{\phi_2} = -m^2\phi_2 - 4g\phi_2\pqty{\phi_1^2 + \phi_2^2} = 0 \\
+		\pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi_1}} = \partial^{\mu}\phi_1, \;\; \pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi_2}} = \partial^{\mu}\phi_2 \\	
+		\partial_{\mu}\partial^{\mu}\phi_1 + m^2\phi_1 + 4g\phi_1\pqty{\phi_1^2 + \phi_2^2} = 0 \\
+		\partial_{\mu}\partial^{\mu}\phi_1 + m^2\phi_1 + 4g\phi_2\pqty{\phi_1^2 + \phi_2^2} = 0
+	\end{gather*}
+\end{chapter7}
+
+\begin{chapter7}
+	Referring to Chapter 5's solution:
+	\begin{gather*}
+		\Pi^{\mu} = \pdv{\mathcal{L}}{\pqty{\partial_{\mu}\phi}} = \partial^{\mu}\phi
+	\end{gather*}
+\end{chapter7}
+
+\newtheorem{chapter8}{Problem}
+\newcounter{subpart8}[chapter8]
+\chapter{The passage of time}
+
+\begin{chapter8}
+	
+\end{chapter8}
+
+\begin{chapter8}
+	\begin{gather*}
+		\hat{H} = \sum_k E_k \hat{a}_k^\dagger \hat{a}_k \\
+		\hat{a}^{\dagger}_{k}(t) = e^{i\hat{H}t/\hbar}\hat{a}^{\dagger}_{k}(0)e^{-i\hat{H}t/\hbar} \\
+		\dv{\hat{a}^{\dagger}_{k}(t)}{t} = \frac{i}{\hbar}\pqty{e^{i\hat{H}t/\hbar}\bqty{\hat{H},\hat{a}^{\dagger}_{k}(0)}e^{-i\hat{H}t/\hbar}} \\
+		= \frac{iE_k}{\hbar}\pqty{e^{i\hat{H}t/\hbar}\bqty{\hat{n}_k,\hat{a}^{\dagger}_{k}(0)}e^{-i\hat{H}t/\hbar}} = \frac{iE_k}{\hbar}\hat{a}^{\dagger}_{k}(t) \\
+		\int \frac{\dd{\hat{a}^{\dagger}_{k}(t)}}{\hat{a}^{\dagger}_{k}(t)} = \int \frac{iE_k}{\hbar}\dd{t} \longrightarrow \hat{a}^{\dagger}_{k}(t) = \hat{a}^{\dagger}_{k}(0)e^{iE_kt/\hbar}
+	\end{gather*}
+\end{chapter8}
+
+\begin{chapter8}
+	\begin{gather*}
+		\hat{X}(t) = e^{i\hat{H}t/\hbar}X_{lm}\hat{a}^{\dagger}_l \hat{a}_m e^{-i\hat{H}t/\hbar} \\
+		\dv{\hat{X}}{t} = 
+	\end{gather*}	
+\end{chapter8}
+
+\begin{chapter8}
+	\begin{gather*}
+		\dv{\hat{S}^z_H}{t} = \frac{1}{i\hbar}\bqty{\hat{S}^z_H,\omega\hat{S}^y_H} = \frac{\omega}{i\hbar}\bqty{\hat{S}^z_H,\hat{S}^y_H} = \frac{\omega}{i\hbar}\pqty{-i\hbar\hat{S}^x_H} = -\omega\hat{S}^x_H \\
+		\dv{\hat{S}^x_H}{t} = \frac{1}{i\hbar}\bqty{\hat{S}^x_H,\omega\hat{S}^y_H} = \frac{\omega}{i\hbar}\bqty{\hat{S}^z_H,\hat{S}^y_H} = \frac{\omega}{i\hbar}\pqty{i\hbar\hat{S}^z_H} = \omega\hat{S}^z_H 
+	\end{gather*}
+\end{chapter8}
+
+\newtheorem{chapter9}{Problem}
+\newcounter{subpart9}[chapter9]
+\chapter{Quantum mechanical transformations}
+
+\begin{chapter9}
+	\begin{gather*}
+		\hat{U}\pqty{\bf a} = \exp[-i\bf{\hat p\cdot a}] \\
+		\pdv{\hat{U}\pqty{\bf a}}{\bf a}\bigg|_{{\bf a} = 0} = -i{\bf \hat p}\exp[-i{\bf\hat{p}}\cdot 0]\\
+		{\bf \hat{p}} = -\frac{1}{i}\pdv{\hat{U}\pqty{\bf a}}{\bf a}\bigg|_{{\bf a} = 0}
+	\end{gather*}
+\end{chapter9}
+
+\begin{chapter9}
+	\begin{gather*}
+		K = \frac{1}{i}\pdv{{\bf \Lambda}\pqty{\phi^1}}{\phi^1}\bigg|_{{\phi^1} = 0} = \frac{1}{i}\begin{vmatrix}
+			\sinh \phi^1 & \cosh \phi^1 & 0 & 0 \\
+			\cosh \phi^1 & \sinh \phi^1 & 0 & 0 \\
+			0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0
+		\end{vmatrix}_{\phi^1 = 0}
+		= -i\begin{bmatrix}
+			0 & 1 & 0 & 0 \\
+			1 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0
+		\end{bmatrix}
+	\end{gather*}
+\end{chapter9}
+
+\begin{chapter9}
+	Going to the MCRF and composing boosts:
+	\begin{gather*}
+		\Lambda^{\mu}_{\;\nu} = \lim_{{\bf v}\to 0}\begin{bmatrix}
+			\gamma & \gamma v^1 & \gamma v^2 & \gamma v^3 \\
+			\gamma v^1 & \gamma & 0 & 0 \\
+			\gamma v^2 & 0 & \gamma & 0 \\
+			\gamma v^3 & 0 & 0 & \gamma
+		\end{bmatrix} = \begin{bmatrix}
+			1 &  v^1 &  v^2 &  v^3 \\
+			v^1 & 1 & 0 & 0 \\
+			v^2 & 0 & 1 & 0 \\
+			v^3 & 0 & 0 & 1
+		\end{bmatrix}
+	\end{gather*}
+	For an infinitesimal counter-clockwise rotations, compose the matrices:
+	\begin{gather*}
+		\Lambda^{\mu}_{\;\nu} = \begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & \theta^3 & 0 \\
+			0 & -\theta^3 & 1 & 0\\
+			0 & 0 & 0 & 1
+		\end{bmatrix}
+		\begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & -\theta^2 \\
+			0 & 0 & 1 & 0 \\
+			0 & \theta^2 & 0 & 1
+		\end{bmatrix}
+		\begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 \\
+			0 & 0 & 1 & \theta^1 \\
+			0 & 0 & -\theta^1 & 1
+		\end{bmatrix} \\
+		\Lambda^{\mu}_{\;\nu} = \begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & \theta^3 & -\theta^2 \\
+			0 & -\theta^3 & 1 & \theta^1 \\
+			0 & \theta^2 & -\theta^1 & 1
+		\end{bmatrix}
+	\end{gather*}
+	Compose the boosts and rotation matrices:
+	\begin{gather*}
+		\Lambda^{\mu}_{\nu} = \Lambda^{\mu}_{\;\bar{\nu}}\Lambda^{\bar{\nu}}_{\;\nu} = 
+		L_z R_z L_y R_y L_x R_x \\
+		\Lambda^{\mu}_{\nu} = 
+		\begin{bmatrix}
+			1 & v^1 & v^2 & v^3 \\
+			v^1 & 1 & \theta^3 & -\theta^2 \\
+			v^2 & -\theta^3 & 1 & \theta^1 \\
+			v^3 & \theta^2 & -\theta^1 & 1
+		\end{bmatrix}
+	\end{gather*}
+	Extracting the identity matrix, the general infinitesimal Lorentz transformation can be written as:
+	\begin{gather*}
+		{\bf \Lambda = 1 + \omega} = \begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & 1 & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{bmatrix} +
+		\begin{bmatrix}
+			0 & v^1 & v^2 & v^3 \\
+			v^1 & 0 & \theta^3 & -\theta^2 \\
+			v^2 & -\theta^3 & 0 & \theta^1 \\
+			v^3 & \theta^2 & -\theta^1 & 0
+		\end{bmatrix} \\
+	\end{gather*}
+	The following tensors are indeed antisymmetric:
+	\begin{gather*}
+		\omega^{\mu\nu} = \omega^{\mu}_{\;\lambda}g^{\lambda\nu} =
+		\begin{bmatrix}
+			0 & v^1 & v^2 & v^3 \\
+			v^1 & 0 & \theta^3 & -\theta^2 \\
+			v^2 & -\theta^3 & 0 & \theta^1 \\
+			v^3 & \theta^2 & -\theta^1 & 0
+		\end{bmatrix}
+		\begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & -1 & 0 & 0 \\
+			0 & 0 & -1 & 0 \\
+			0 & 0 & 0 & -1 
+		\end{bmatrix} \\
+		=
+		\begin{bmatrix}
+			0 & -v^1 & -v^2 & -v^3 \\
+			v^1 & 0 & -\theta^3 & \theta^2 \\
+			v^2 & \theta^3 & 0 & -\theta^1 \\
+			v^3 & -\theta^2 & \theta^1 & 0
+		\end{bmatrix} \\
+		\omega_{\mu\nu} = g_{\mu\lambda}\omega^{\lambda}_{\;\nu} =
+		\begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			0 & -1 & 0 & 0 \\
+			0 & 0 & -1 & 0 \\
+			0 & 0 & 0 & -1 
+		\end{bmatrix}
+		\begin{bmatrix}
+			0 & v^1 & v^2 & v^3 \\
+			v^1 & 0 & \theta^3 & -\theta^2 \\
+			v^2 & -\theta^3 & 0 & \theta^1 \\
+			v^3 & \theta^2 & -\theta^1 & 0
+		\end{bmatrix} \\
+		=
+		\begin{bmatrix}
+			0 & v^1 & v^2 & v^3 \\
+			-v^1 & 0 & -\theta^3 & \theta^2 \\
+			-v^2 & \theta^3 & 0 & -\theta^1 \\
+			-v^3 & -\theta^2 & \theta^1 & 0
+		\end{bmatrix}
+	\end{gather*}
+\end{chapter9}
+
+\newtheorem{chapter10}{Problem}
+\newcounter{subpart10}[chapter10]
+\chapter{Symmetry}
+
+\begin{chapter10}
+	\begin{gather*}
+		\bqty{\phi(x),P^{\alpha}} = \phi(x)P^{\alpha} - P^{\alpha}\phi(x) =  \int \phi(x) T^{0\alpha}\;\dd^3{y} - \int T^{0\alpha}\phi(x) \dd^3{y}
+	\end{gather*}
+\end{chapter10}
+
+\begin{chapter10}
+	
+\end{chapter10}
+
+\begin{chapter10}
+	\begin{gather*}
+		T^{\mu\nu} = \Pi^{\mu}\partial^{\nu}\phi - g^{\mu\nu}\cal{L} \\
+		T^{00} = \Pi^{0}\partial^{0}\phi - g^{00}\bqty{\frac{1}{2}\pqty{\partial_{\mu}\phi}^2 - \frac{1}{2}m^2\phi^2} = \pi\dot{\phi} - \mathcal{L} = \frac{1}{2}\pi^2 + \frac{1}{2}\pqty{\nabla{\phi}}^2 + \frac{1}{2}m^2\phi^2 \\
+		\partial_{\mu}T^{\mu\nu} = \partial_{\mu}\bqty{\partial^{\mu}\partial^{\nu}\phi - g^{\mu\nu}\cal{L}} \\
+		= \partial^2\phi\partial^{\nu}\phi - \partial^{\mu}\phi\partial_{\mu}\partial^{\nu}\phi - \frac{1}{2}\bqty{\partial^{\rho}\phi \partial^{\nu}\partial_{\rho}\phi+ \partial_{\rho}\phi\partial^{\nu}\partial^{\rho}\phi - 2m^2\phi\partial^{\nu}\phi} \\
+		= \pqty{\partial^2 + m^2}\phi\pqty{\partial^{\nu}\phi} = 0 \\
+		P^i = \int T^{0i}\;\dd^3{x} = \int \pqty{\Pi^0\partial^i \phi - g^{0i}\cal{L}}\;\dd^3{x} = \int \partial^0\phi\partial^i\phi\;\dd^3{x}
+	\end{gather*}
+	The Klein-Gordon equation, which is the equation of motion for scalar field theory, satisfies the divergence of the energy-momentum tensor.
+\end{chapter10}
+
+\begin{chapter10}
+	\begin{gather*}
+		{\cal L} = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} = -\frac{1}{2}\bqty{\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu} - \partial_{\mu}A_{\nu}\partial^{\nu}A^{\mu}} \\
+		\pdv{\pqty{\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}}}{\pqty{\partial_{\sigma}A_{\rho}}} = \delta^{\sigma}_{\mu}\delta^{\rho}_{\nu}\partial^{\mu}A^{\nu} + \partial_{\mu}A_{\nu}g^{\alpha\sigma}g^{\rho\beta}\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}= 2\partial^{\sigma}A^{\rho} \\
+		\pdv{\pqty{\partial_{\mu}A_{\nu}\partial^{\nu}A^{\mu}}}{\pqty{\partial_{\sigma}A_{\rho}}} = \delta^{\sigma}_{\mu}\delta^{\rho}_{\nu}\partial^{\nu}A^{\mu} + \partial_{\mu}A_{\nu}g^{\alpha\rho}g^{\sigma\beta}\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}= 2\partial^{\rho}A^{\sigma} \\
+		\pdv{\cal L}{\pqty{\partial_{\sigma}A_{\rho}}} = -\pqty{\partial^{\sigma}A^{\rho} - \partial^{\rho}A^{\sigma}} = - F^{\sigma\rho} = \Pi^{\sigma\rho} \\
+		T^{\mu}_{\nu} = \Pi^{\mu\sigma}\partial_{\nu}A_{\sigma} - \delta^{\mu}_{\nu}{\cal L} \\
+		T^{\mu\nu} = g^{\alpha\nu}T^{\mu}_{\alpha} = -F^{\mu\sigma}\partial^{\nu}A_{\sigma} + \frac{1}{4}g^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta} \\
+		X^{\lambda\mu\nu} = F^{\mu\lambda}A^{\nu} = -F^{\lambda\mu}A^{\nu} = X^{\mu\lambda\nu} \\
+		\tilde{T}^{\mu\nu} = T^{\mu\nu} + \partial_{\nu}X^{\lambda\mu\nu} = T^{\mu\nu} + \partial_{\nu}\pqty{F^{\mu\lambda}A^{\nu}} \\
+		= -F^{\mu\sigma}\partial^{\nu}A_{\sigma} + \frac{1}{4}g^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta} + \cancel{\partial_\lambda F^{\mu\lambda}A^{\nu}} + F^{\mu\lambda}\partial_{\lambda}A^{\nu} \\
+		\stackrel{\lambda\to\sigma}{=} F^{\mu\sigma}\pqty{\partial_{\sigma}A^{\nu} - \partial^{\nu}A_{\sigma}} + \frac{1}{4}g^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta} = F^{\mu\sigma}F^{\nu}_{\sigma} + \frac{1}{4}g^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta} \\ 
+		\tilde{T}^{00} = F^{0\sigma}F^0_{\sigma} + \frac{1}{4}g^{00}F_{\alpha\beta}F^{\alpha\beta} = {\bf E}^2 + \frac{1}{2}\pqty{{\bf B}^2 - {\bf E}^2} = \frac{1}{2}\pqty{{\bf E}^2 + {\bf B}^2} \\
+		\tilde{T}^{i0} = F^{i\sigma}F^0_\sigma + \cancel{\frac{1}{4}g^{i0}F_{\alpha\beta}F^{\alpha\beta}} = \epsilon^{ijk}E_j B_k = \pqty{\bf E \times B}^i
+	\end{gather*}
+\end{chapter10}
+
+\newtheorem{chapter11}{Problem}
+\newcounter{subpart11}[chapter11]
+\chapter{Canonical quantization of fields}
+
+\begin{chapter11}
+	\begin{gather*}
+		\bqty{\hat{\phi}(x),\hat{\phi}(y)} = \int \frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{a}^{\dagger}_{\bf p}e^{ip\cdot x}} \\
+		\int \frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf q}e^{-iq\cdot y} + \hat{a}^{\dagger}_{\bf q}e^{iq\cdot y}} - \int \frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf q}e^{-iq\cdot y} + \hat{a}^{\dagger}_{\bf q}e^{iq\cdot y}} \\
+		\int \frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{a}^{\dagger}_{\bf p}e^{ip\cdot x}} \\
+		= \int \dd^3{p}\int \frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{1}{\pqty{4E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\bqty{\hat{a}_{\bf p},\hat{a}^{\dagger}_{\bf q}}e^{-ip\cdot x}e^{iq\cdot y} + \bqty{\hat{a}^{\dagger}_{\bf p},\hat{a}_{\bf q}}e^{ip\cdot x}e^{-iq\cdot y}} \\
+		= \int \dd^3{p}\int \frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{1}{\pqty{4E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\delta^{(3)}\pqty{\bf p - q}e^{-ip\cdot x}e^{iq\cdot y} - \delta^{(3)}\pqty{\bf q - p}e^{ip\cdot x}e^{-iq\cdot y}} \\
+		= \int\frac{\dd^3{p}}{\pqty{2\pi}^3}\frac{1}{2E_{\bf p}}\pqty{e^{-ip\cdot(x-y)} - e^{-ip\cdot(y-x)}}
+	\end{gather*}
+\end{chapter11}
+
+\begin{chapter11}
+	\begin{gather*}
+		\bqty{\hat{\phi}(x),\hat{\Pi}^0(y)} = \int \frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{a}^{\dagger}_{\bf p}e^{ip\cdot x}} \\
+		\int \frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{-iE_{\bf q}}\pqty{\hat{a}_{\bf q}e^{-iq\cdot y} - \hat{a}^{\dagger}_{\bf q}e^{iq\cdot y}} \\
+		-\int \frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{-iE_{\bf q}}\pqty{\hat{a}_{\bf q}e^{-iq\cdot y} - \hat{a}^{\dagger}_{\bf q}e^{iq\cdot y}}\int \frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{a}^{\dagger}_{\bf p}e^{ip\cdot x}} \\
+		= \frac{i}{2}\int \dd^3{p}\int \frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{E_{\bf q}}{\pqty{E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\bqty{\hat{a}_{\bf p},\hat{a}^{\dagger}_{\bf q}}e^{-ip\cdot x}e^{iq\cdot y} + \bqty{\hat{a}_{\bf q},\hat{a}^{\dagger}_{\bf p}}e^{ip\cdot x}e^{-iq\cdot y}} \\
+		= \int \dd^3{p}\int \frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{1}{\pqty{4E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\delta^{(3)}\pqty{\bf p - q}e^{-ip\cdot x}e^{iq\cdot y} + \delta^{(3)}\pqty{\bf q - p}e^{ip\cdot x}e^{-iq\cdot y}} \\
+		= \frac{i}{2}\int\frac{\dd^3{p}}{\pqty{2\pi}^3}\pqty{e^{-ip\cdot(x-y)} + e^{ip\cdot(x-y)}}
+	\end{gather*}
+\end{chapter11}
+
+
+\newtheorem{chapter12}{Problem}
+\newcounter{subpart12}[chapter12]
+\chapter{Examples of canonical quantization}
+
+\begin{chapter12}
+	\begin{gather*}
+		\mathcal{H} = \partial^0\hat{\psi}^{\dagger}\hat{\psi} + \partial^0\hat{\psi}\hat{\psi}^{\dagger} + \nabla\hat{\psi}^{\dagger}\cdot\nabla\hat{\psi} + m^2 \hat{\psi}^{\dagger}\hat{\psi} \\
+		= \int\frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{-iE_{\bf q}}\pqty{\hat{a}^{\dagger}_{\bf q}e^{-iq\cdot x} - \hat{b}_{\bf q}e^{iq\cdot x}}\int \frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{b}^{\dagger}_{\bf p}e^{ip\cdot x}} \\
+		+ \int\frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{-iE_{\bf p}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} - \hat{b}^{\dagger}_{\bf p}e^{ip\cdot x}}\int\frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}^{\dagger}_{\bf q}e^{-iq\cdot x} + \hat{b}_{\bf q}e^{iq\cdot x}}  \\
+		+ \int\frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{-i\bf q}\pqty{\hat{a}^{\dagger}_{\bf q}e^{-iq\cdot x} - \hat{b}_{\bf q}e^{iq\cdot x}} \cdot \int\frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{i\bf p}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} - \hat{b}^{\dagger}_{\bf p}e^{ip\cdot x}}\\
+		+ m^2 \int\frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}^{\dagger}_{\bf q}e^{-iq\cdot x} + \hat{b}_{\bf q}e^{iq\cdot x}}\int\frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{b}^{\dagger}_{\bf p}e^{ip\cdot x}} \\
+		= \int\dd^3{p}\int\frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{-iE_{\bf q}}{\pqty{4E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}^{\dagger}_{\bf q}\hat{a}_{\bf p}e^{-i(p+q)\cdot x} - \hat{b}_{\bf q}\hat{b}^{\dagger}_{\bf p}e^{i(p+q)\cdot x}} \\
+		+ \int\dd^3{p}\int\frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{-iE_{\bf p}}{\pqty{4E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}\hat{a}^{\dagger}_{\bf q}e^{-i(p+q)\cdot x} - \hat{b}^{\dagger}_{\bf p}\hat{b}_{\bf q}e^{i(p+q)\cdot x}} \\
+		+ \int\dd^3{p}\int\frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{\bf p \cdot q}{\pqty{4E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}^{\dagger}_{\bf q}\hat{a}_{\bf p}e^{-i(p+q)\cdot x} + \hat{b}_{\bf q}\hat{b}^{\dagger}_{\bf p}e^{i(p+q)\cdot x}} \\
+		+ m^2 \int\dd^3{p}\int\frac{\dd^3{q}}{\pqty{2\pi}^3}\frac{1}{\pqty{4E_{\bf p}E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}^{\dagger}_{\bf q}\hat{a}_{\bf p}e^{-i(p+q)\cdot x} + \hat{b}_{\bf q}\hat{b}^{\dagger}_{\bf p}e^{i(p+q)\cdot x}}
+	\end{gather*}
+\end{chapter12}
+
+\begin{chapter12}
+	\begin{gather*}
+		\bqty{\hat{\psi}(x),\hat{\psi}^{\dagger}(y)} = \int\frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{b}^{\dagger}_{\bf p}e^{ip\cdot x}}\\
+		\int\frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}^{\dagger}_{\bf q}e^{-iq\cdot x} + \hat{b}_{\bf q}e^{iq\cdot x}} - \int\frac{\dd^3{q}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf q}}^{\frac{1}{2}}}\pqty{\hat{a}^{\dagger}_{\bf q}e^{-iq\cdot x} + \hat{b}_{\bf q}e^{iq\cdot x}}\\
+		\int\frac{\dd^3{p}}{\pqty{2\pi}^{\frac{3}{2}}}\frac{1}{\pqty{2E_{\bf p}}^{\frac{1}{2}}}\pqty{\hat{a}_{\bf p}e^{-ip\cdot x} + \hat{b}^{\dagger}_{\bf p}e^{ip\cdot x}}
+	\end{gather*}
+\end{chapter12}
+
+\begin{chapter12}
+	\stepcounter{subpart12}
+	\begin{gather*}
+		(\alph{subpart12}) \hspace{10pt}
+		\begin{bmatrix}
+			\phi_1' \\
+			\phi_2' 
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			\cos\alpha & -\sin\alpha \\
+			\sin\alpha & \cos\alpha \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			\phi_1 \\
+			\phi_2
+		\end{bmatrix} \\
+		\bqty{\hat{Q}_N, \hat{\phi_1}} = -iD\hat{\phi_1} = i\hat{\phi_2}
+	\end{gather*}
+	\stepcounter{subpart12}
+	\begin{gather*}
+		(\alph{subpart12}) \hspace{10pt}
+		\bqty{\hat{Q}_N, \hat{\phi_2}} = -iD\hat{\phi_1} = -i\hat{\phi_1}
+	\end{gather*}
+	\stepcounter{subpart12}
+	\begin{gather*}
+		(\alph{subpart12}) \hspace{10pt}
+		\bqty{\hat{Q}_N, \hat{\psi}} = \frac{1}{\sqrt{2}}\bqty{\hat{Q}_N, \hat{\phi_1}} + \frac{i}{\sqrt{2}}\bqty{\hat{Q}_N, \hat{\phi_2}} = \frac{i}{\sqrt{2}}\hat{\phi_2} + \frac{1}{\sqrt{2}}\hat{\phi_1} = \hat{\psi}
+	\end{gather*}	
+\end{chapter12}
+
+\begin{chapter12}
+	Note: $D\hat{\theta} = \pm 1$. Substituting:
+	\begin{gather*}
+		\bqty{\hat{Q}_N, \hat{\theta}} = -iD\hat{\theta} = i \\
+		\bqty{\int\rho({\bf x},t)\; \dd^3{x}, \theta({\bf x},t)} = \int\dd^3{\bf x}\;\bqty{\rho,\theta}
+	\end{gather*}
+\end{chapter12}
+
+\begin{chapter12}
+	\begin{gather*}
+		\pdv{\mathcal L}{\psi} - \partial_{\mu}\pqty{\pdv{\mathcal L}{\pqty{\partial_{\mu}\psi}}} = \pdv{\mathcal L}{\psi} - \partial_{\mu}\Pi^{\mu}_{\psi} = 0 \\
+		\pdv{\mathcal L}{\psi} = -V(x)\psi^{\dagger}(x), \;\; \Pi^0_{\psi} = i\psi^{\dagger} \\
+		\partial_0\Pi^0_{\psi} = i\partial_0 \psi^{\dagger}, \;\; \partial_i \Pi^i_{\psi} = -\frac{1}{2m}\nabla^2\psi^{\dagger}\\
+		\therefore i\partial_0 \psi^{\dagger} -\frac{1}{2m}\partial_i\partial^i\psi^{\dagger} - V(x)\psi^{\dagger}(x) = 0 \\
+		\longrightarrow i\partial_0\psi^{\dagger} = \hat{H}\psi^{\dagger}, \;\; \hat{H} = -\frac{1}{2m}\nabla^2 + \hat{V} \\
+		V = 0 \longrightarrow i\pdv{\psi}{t} = -\frac{1}{2m}\nabla^2\psi \\
+		iT'(t)X(x) = -\frac{1}{2m}X''(x)T(t) \\
+		\frac{T'}{T} = -iE \longrightarrow T(t) = Ae^{-iEt} \\
+		X'' + 2mEX = 0 \longrightarrow X(x) = Be^{ipx} + Ce^{-ipx},\; p = \sqrt{2mE} \\
+		T(t)X(x) = Ae^{i(px-Et)} + Be^{-i(px - Et)}
+	\end{gather*}
+\end{chapter12}
+
+\begin{chapter12}
+	\begin{gather*}
+		J^0_N = i\Psi^{\dagger}(i\Psi) + i\Psi(-i\Psi^{\dagger}) \\
+		Q_{N_c} = \int \hat{\Psi}\hat{\Psi}^{\dagger} - \hat{\Psi}^{\dagger}\hat{\Psi}\;\dd^3{x} \\
+		= \int \dd^3{x}\bqty{\int \frac{\dd^3{\bf p}}{\pqty{2\pi}^{\frac{3}{2}}}\hat{a}_{\bf p}e^{-ip\cdot x}\int \frac{\dd^3{\bf q}}{\pqty{2\pi}^{\frac{3}{2}}}\hat{a}^{\dagger}_{\bf q}e^{iq\cdot x} - \int \frac{\dd^3{\bf q}}{\pqty{2\pi}^{\frac{3}{2}}}\hat{a}^{\dagger}_{\bf q}e^{iq\cdot x}\int \frac{\dd^3{\bf p}}{\pqty{2\pi}^{\frac{3}{2}}}\hat{a}_{\bf p}e^{-ip\cdot x}} \\
+		\frac{1}{\pqty{2\pi}^3}\int \dd^3{x}\bqty{\int \dd^3{\bf p}\int \dd^3{\bf q}\;\hat{a}_{\bf p}\hat{a}^{\dagger}_{\bf q}e^{i(p-q)\cdot x} - \hat{a}^{\dagger}_{\bf q}\hat{a}_{\bf p}e^{-i(p-q)\cdot x}} \\
+		= \int \dd^3{\bf p}\int \dd^3{\bf q}\;\bqty{\hat{a}_{\bf p}\hat{a}^{\dagger}_{\bf q}\delta^3(\bf p - q) - \hat{a}^{\dagger}_{\bf q}\hat{a}_{\bf p}\delta^3(\bf q - p)} \\
+		= \int \dd^3{\bf p}\bqty{\hat{a}_{\bf p},\hat{a}^{\dagger}_{\bf p}} = \bf p
+	\end{gather*}	
+\end{chapter12}
+
+\newtheorem{chapter13}{Problem}
+\newcounter{subpart13}[chapter13]
+\chapter{Fields with many components and massive electromagnetism}
+
+\begin{chapter13}
+	\stepcounter{subpart13}
+	$\vec{J}$ represents the Levi-Civita tensor as a vector of matrices.
+	\begin{gather*}
+		(\alph{subpart13}) \hspace{10pt}
+		\hat{\vec{{\bf Q}}}_{N_c} = \int \dd^3{p}\;\hat{\bf A}^{\dagger}\vec{J}\hat{\bf A} 
+	\end{gather*}
+	The inverse transformations and resultant computations are as follows:
+	\stepcounter{subpart13}
+	\begin{gather*}
+		(\alph{subpart13}) \hspace{10pt}
+		\hat{a}_1 = \frac{1}{\sqrt 2}\pqty{\hat{b}_{-1} - \hat{b}_1},\; \hat{a}_2 = -\frac{i}{\sqrt 2}\pqty{\hat{b}_{-1} + \hat{b}_{1}},\; \hat{a}_3 = \hat{b}_0 \\
+		\hat{Q}^{2}_{N_c} = \\
+		\hat{Q}^{3}_{N_c} = -i\int \dd^3{p}\;\pqty{\hat{a}_{1\bf p}^{\dagger}\hat{a}_{2\bf p} - \hat{a}^{\dagger}_{2 \bf p}\hat{a}_{1\bf p}} = \int \dd^3{p}\;\pqty{\hat{b}^{\dagger}_{1\bf p}\hat{b}_{1\bf p} - \hat{b}^{\dagger}_{-1\bf p}\hat{b}_{-1\bf p}} \\
+		J_{\hat{b}}^1 = \frac{1}{\sqrt 2}
+		\begin{bmatrix}
+			0 & -1 & 0 \\
+			1 & 0 & -1 \\
+			0 & 1 & 0
+		\end{bmatrix},\;
+		J_{\hat{b}}^2 = -\frac{i}{\sqrt 2}
+		\begin{bmatrix}
+			0 & 1 & 0 \\
+			1 & 0 & 1 \\
+			0 & 1 & 0	
+		\end{bmatrix},\;
+		J_{\hat{b}}^3 = 
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & 0 & 0 \\
+			0 & 0 & -1	
+		\end{bmatrix} 
+	\end{gather*}
+\end{chapter13}
+
+\begin{chapter13}
+	
+\end{chapter13}
+
+\newtheorem{chapter16}{Problem}
+\newcounter{subpart16}[chapter16]
+\chapter{Propagators and Green's functions}
+
+\begin{chapter16}\label{prob:1}
+	\stepcounter{subpart16}
+	\begin{gather*}
+	(\alph{subpart16}) \hspace{10pt}
+		\mel{x}{\hat{H}}{\psi} = E\braket{x}{\psi} \\
+		\frac{\hbar^2}{2m}\dv[2]{\psi}{x} + E{\psi} = 0, \;\; V = 0 \\
+		\psi_n(x) = Ae^{ikx} + Be^{-ikx},\;\;k = \sqrt{2mE}/\hbar \\
+		\psi(0) = \psi(a) = 0 \implies B = -A \\
+		\psi_n(x) = \sqrt{\frac{2}{a}}\sin\pqty{\frac{n\pi x}{a}}
+	\end{gather*}
+	\stepcounter{subpart16}
+	\begin{gather*}
+	(\alph{subpart16}) \hspace{10pt}
+		E_n = \frac{\hbar^2k^2}{2m} = \frac{\hbar^2n^2\pi^2}{2ma^2} \\
+		G^+(n,t_2,t_1) = \theta(t_2 - t_1)e^{-iE_n\pqty{t_2 - t_1}}
+	\end{gather*}
+	\stepcounter{subpart16}
+	\begin{gather*}
+	(\alph{subpart16}) \hspace{10pt}
+		G^+(n,\hbar\omega) = \frac{i}{\hbar\omega - E_n + i\epsilon}
+	\end{gather*}
+\end{chapter16}
+
+\begin{chapter16}\label{prob:2}
+	\stepcounter{subpart16}
+	\begin{gather*}
+		G^+_0(x,t,y,0) = \theta(t)\ip{x(t)}{y(t)} \\
+		= \theta(t)\mel{x}{e^{-i\hat Ht}}{y} \\
+		= \theta(t)\sum_n e^{iE_n t}\ip{x}{n}\ip{n}{y} = \theta(t)\sum_n\phi_{n}(x)\phi_n^*(y)e^{-iE_n t} \\
+		G^+_0(x,y,E) = \int G^+_0(x,t,y,0) \dd{t} = \int_{-\infty}^{\infty} \theta(t)\sum_n\phi_{n}(x)\phi_n^*(y)e^{-iE_n t}e^{iEt} \dd{t}
+	\end{gather*}
+	Using a damping factor $e^{-\epsilon t}$ to ensure convergence, switching the order of summation and integration, then integrating by parts ($\theta'(t) = \delta(t)$):
+	\begin{gather*}
+		G^+_0(x,y,E) = \sum_n\int_{-\infty}^{\infty} \theta(t)\phi_{n}(x)\phi_n^*(y)e^{i(E - E_n + i\epsilon)t} \dd{t}\\
+		= \sum_n \frac{i\phi_{n}(x)\phi_n^*(y)}{E - E_n + i\epsilon}
+	\end{gather*}
+	\stepcounter{subpart16}
+	(\alph{subpart16}) The integral definition of the Heaviside step function is:
+	\begin{gather*}
+		\theta(t) = i\int_{-\infty}^{\infty}\frac{\dd z}{2\pi}\frac{e^{-izt}}{z+i\epsilon}
+	\end{gather*}
+	Substituting this into the original expression and changing the order of integration:
+	\begin{gather*}
+		G^+_0(p,t,0) = \theta(t)e^{-iE_p t} \\
+		G^+_0(p,E) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\frac{i}{2\pi\pqty{z+i\epsilon}}e^{i\pqty{E - E_p - z}t} \dd{t}\dd{z} \\
+		= \int_{-\infty}^{\infty}\frac{i}{\pqty{z+i\epsilon}}\delta{\pqty{E - E_p - z}} \dd{z} = \frac{i}{E - E_p + i\epsilon}
+	\end{gather*}
+\end{chapter16}
+
+\begin{chapter16}\label{prob:3}
+	\stepcounter{subpart16}
+	(\alph{subpart16}) The one-dimensional harmonic oscillator with the corresponding forcing function $f(t)$ has the following solution for the particular integral:
+	\begin{gather*}
+		m\pdv[2]{t}A(t-u) + m\omega_0^2A(t-u) = \tilde F(\omega)e^{-i\omega(t-u)} \\
+		A_P(t-u) = \frac{1}{\pqty{D^2 + \omega_0^2}}\frac{\tilde F(\omega)}{m}e^{-i\omega(t-u)} = \pqty{1 + \frac{D^2}{\omega_0^2}}^{-1}\frac{\tilde F(\omega)}{m\omega_0^2}e^{-i\omega(t-u)},\;\; D = \dv{t} \\
+		= \frac{\tilde F(\omega)}{m\omega_0^2}e^{i\omega u}\bqty{\sum_{k=0}^{\infty} \pqty{\frac{iD}{\omega_0}}^{2k}e^{-i\omega t}} = \frac{\tilde F(\omega)}{m\omega_0^2}e^{-i\omega(t-u)}\sum_{k=0}^{\infty}\pqty{\frac{\omega}{\omega_0}}^{2k}\\
+		= \frac{\tilde F(\omega)}{m\omega_0^2}e^{-i\omega(t-u)}\bqty{\frac{1}{1-\omega^2/\omega_0^2}} = -\frac{\tilde F(\omega)}{m\pqty{\omega^2 - \omega_0^2}}e^{-i\omega(t-u)} 
+	\end{gather*}
+	Therefore the solution is:
+	\begin{gather*}
+		A(t-u) = c_1 \cos\omega_0 t + c_2 \sin\omega_0 t - \frac{\tilde F(\omega)}{m\pqty{\omega^2 - \omega_0^2}}e^{-i\omega(t-u)} 
+	\end{gather*}
+	\stepcounter{subpart16}(\alph{subpart16})
+	The differential equation that satisfies the Green's function is:
+	\begin{gather*}
+		\bqty{m\pdv[2]{t} + m\omega_0^2}G(t,k) = \delta(t- k)
+	\end{gather*}
+	Taking the Fourier transform, rearranging and then taking its inverse:
+	\begin{gather*}
+		-m(\omega^2 - \omega_0^2)G(\omega,k) = \int_{-\infty}^{\infty} \delta(t - k) e^{i\omega t} \dd{t} = e^{i\omega k} \\
+		G(t,k) = -\frac{1}{m}\int_{-\infty}^{\infty}\frac{\dd{\omega}}{2\pi}\frac{e^{-i\omega(t-k)}}{\omega^2 - \omega_0^2} 
+	\end{gather*}
+	Using the previous result to verify the solution:
+	\begin{gather*}
+		A(t-u) = -\frac{1}{2\pi m}\int_0^{\infty}\int_{-\infty}^{\infty}\frac{\tilde F(\omega)}{\omega^2 - \omega_0^2}e^{-i\omega(t-u + k)}\dd{\omega}\dd{k} \\
+		=  \frac{1}{2\pi i m}\int_{-\infty}^{\infty}\frac{\tilde F(\omega)}{\omega(\omega_0^2 - \omega^2)}e^{-i\omega(t-u)}\dd{\omega} \\ = \frac{1}{m\omega_0^2}\int_{-\infty}^{\infty}\frac{1}{2\pi i}\bqty{\frac{1}{\omega} + \frac{1}{\omega_0^2 - \omega^2}}\tilde F(\omega)e^{-i\omega(t-u)} \dd{\omega}
+	\end{gather*}
+	\stepcounter{subpart16}(\alph{subpart16})
+	Taking the Laplace transform of the differential equation form of the Green's function:
+	\begin{gather*}
+		G(s,u) = \frac{e^{us}}{m(s^2 + \omega_0^2)}
+	\end{gather*}
+	Using convolution to find the inverse:
+	\begin{gather*}
+		G^+(t,u) = \frac{1}{m\omega_0}\int_0^{t} \delta(k-u) \sin \omega_0(t - k) \dd{k}  = \frac{1}{m\omega_0}\sin\omega_0(t-u)
+	\end{gather*}
+	\stepcounter{subpart16}(\alph{subpart16})
+\end{chapter16}
+	
+\begin{chapter16}\label{prob:4}
+	\stepcounter{subpart16}(\alph{subpart16})
+	Taking the three-dimensional Fourier transform:
+	\begin{gather*}
+		\int_{-\infty}^{\infty} \pqty{\nabla^2 + \mathbf k^2}G_{\mathbf k}(\mathbf x)e^{-i\bf q\cdot x}\,\dd^3{\bf x} = 1 \\
+		\tilde G_{\mathbf k}(\mathbf q) = \frac{1}{\mathbf k^2 - \mathbf q^2}
+	\end{gather*}
+	\stepcounter{subpart16}(\alph{subpart16})
+	The Fourier transform of $G^+_{\mathbf k}(\mathbf x)$ with a damping factor is:
+	\begin{gather*}
+		\tilde G^+_{\mathbf k}(\mathbf q) = \int_{-\infty}^{\infty} -\frac{e^{i\pqty{\abs{\mathbf k} + i\epsilon}\abs{\mathbf x}}}{4\pi\abs{\mathbf x}}e^{-i\bf q\cdot x}\,\dd^3{\bf x} = -\frac{1}{2}\int_{-1}^{1}\int_0^{\infty}{\abs{\mathbf x}e^{-i\pqty{\abs{\mathbf q}\cos\theta -\abs{\mathbf k} - i\epsilon}\abs{\mathbf x}}} \dd{\abs{\mathbf x}}\dd\pqty{\cos\theta} \\
+		= \frac{i}{2\abs{\mathbf q}}\int_{-\infty}^{\infty} \bqty{e^{i\abs{\mathbf q}\abs{\mathbf x}}- e^{-i\abs{\mathbf q}\abs{\mathbf x}}}e^{i\pqty{\abs{\mathbf k} + i\epsilon}\abs{\mathbf x}} \dd{\abs{\mathbf x}}
+	\end{gather*}
+\end{chapter16}
+
+\newtheorem{chapter17}{Problem}
+\newcounter{subpart17}[chapter17]
+\chapter{Propagators and fields}
+
+\begin{chapter17}\label{prob:1}
+	\begin{gather*}
+		\braket{x}{0}
+	\end{gather*}
+\end{chapter17}
+
+
+\newtheorem{chapter23}{Problem}
+\newcounter{subpart23}[chapter23]
+\chapter{Path integrals: I said to him, `You're crazy'}
+
+\begin{chapter23}
+	\stepcounter{subpart23}
+	\begin{gather*}
+	(\alph{subpart23}) \hspace{10pt}
+		I(a) = -2\int_{-\infty}^{\infty}\exp\pqty{-\frac{ax^2}{2}} \dd{x} = -2\sqrt{\frac{2\pi}{a}} \\
+		I'(a) = \int_{-\infty}^{\infty}x^2\exp\pqty{-\frac{ax^2}{2}} \dd{x} = \sqrt{\frac{2\pi}{a^3}}
+	\end{gather*}
+	\stepcounter{subpart23}
+	\begin{gather*}
+	(\alph{subpart23}) \hspace{10pt}
+		J_n(a) = (-2)^\frac{n}{2} \int_{-\infty}^{\infty}\exp\pqty{-\frac{ax^2}{2}} \dd{x} = (-2)^{\frac{n}{2}}\sqrt{\frac{2\pi}{a}} \\
+		\dv[k]{J_n(a)}{a} = (-2)^{\frac{n+1}{2}}\sqrt{\pi}\frac{(-1/2)!}{(-1/2-k)!}a^{-\frac{1}{2}-k} \\
+		\dv[n/2]{J_n(a)}{a} = (-2)^{\frac{n+1}{2}}\sqrt{\pi}\frac{\Gamma(1/2)}{\Gamma\pqty{\frac{1-n}{2}}} a^{-\pqty{\frac{n+1}{2}}} = \frac{i^n \pi}{\Gamma\pqty{\frac{1-n}{2}}}\pqty{\frac{2}{a}}^{\frac{n+1}{2}} \\
+		\expval{x^n} = \frac{\int_{-\infty}^{\infty}x^n\exp\pqty{-\frac{ax^2}{2}} \dd{x}}{\int_{-\infty}^{\infty}\exp\pqty{-\frac{ax^2}{2}} \dd{x}} = \frac{i^n \sqrt{\pi}}{\Gamma\pqty{\frac{1-n}{2}}}\pqty{\frac{2}{a}}^{n/2} \\
+		= \begin{cases} 0 & \forall\;n \in 2\mathbb{Z^+} + 1 \\ a^{-n/2}\prod_{k = 1}^{n/2}(2k-1) & \forall\;n \in 2\mathbb{Z^+} \end{cases} \\
+		\therefore \dv[n]{J_{2n}(a)}{a} = \frac{1}{a^n}\prod_{k=1}^{n}(2k-1)
+	\end{gather*}
+\end{chapter23}
+
+\end{document}

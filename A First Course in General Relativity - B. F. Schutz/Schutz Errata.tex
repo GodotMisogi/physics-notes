@@ -1,0 +1,66 @@
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{tensor}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\arctanh}{arctanh}
+
+\begin{document}
+
+\title{List of Errata to \\A First Course in General Relativity (2nd Edition)\\ by Bernard F. Schutz}
+
+\author{Arjit Seth \\(Email: arjitseth@gmail.com)}
+
+\maketitle
+
+\chapter{Special Relativity}
+
+Problem 15.
+Suppose that the velocity v of
+¯
+$\bar{O}$ relative to $O$ is nearly that of light, $\mid{\bf v}\mid$ = $1-\epsilon$,
+$0<\epsilon<1$. Show that the same formulae of Exer. 14 become:
+\begin{equation}
+\begin{split}
+\begin{aligned}
+	&(a)\hspace{10 pt} \Delta{t} \approx \frac{\Delta{\bar{t}}}{\sqrt{2\epsilon}} \\
+	&(b)\hspace{10 pt} \Delta{x} \approx \frac{\Delta{\bar{x}}}{\sqrt{2\epsilon}} \\
+	&(c)\hspace{10 pt} w' \approx 1-\epsilon\frac{(1-w)}{(1+w)}
+\end{aligned}
+\end{split}
+\end{equation}
+Correction:
+\begin{equation}
+\begin{split}
+\begin{aligned}
+	&(b)\hspace{10 pt} \Delta{x} \approx \Delta{\bar{x}}{\sqrt{2\epsilon}} \\
+\end{aligned}
+\end{split}
+\end{equation} \\\\
+Problem 18.
+(b) Use this to solve the following problem. A star measures a second star to be moving
+away at speed $v = 0.9c$. The second star measures a third to be receding in the
+same direction at 0.9c. Similarly, the third measures a fourth, and so on, up to
+some large number $N$ of stars. What is the velocity of the $N$th star relative to the
+first? Give an exact answer and an approximation useful for large $N$.\\\\
+Error:\\\\
+The (partial) solutions manual provides the answer as:
+\begin{equation}
+	 	v_{N,1} = \tanh[(N\times\arctanh(0.9)]
+\end{equation}\\\\\\
+Correction:\\\\
+Since the speed of the second star with respect to the first star is $v_{2,1} = 0.9 \hspace{3 pt}(c = 1)$, the velocity parameter is $u_{1} = \arctanh(0.9)$. Now, the speed of the third star with respect to the second star is $v_{3,2} = 0.9$, assuming they're all moving away from the first star in the same direction. This makes the velocity parameter $u_{2} = \arctanh(0.9)$. Inductively, the velocity parameter of the $N^{th}$ star with respect to the $(N-1)^{th}$ star will be: $v_{N,N-1} = 0.9 \implies u_{N-1} = \arctan(0.9)$ \\ 
+	The velocity of the third star with respect to the reference frame of the first star is:
+	\begin{equation}
+	 	v_{3,1} = \tanh(u_{1}+u_{2}) = \tanh(\arctanh(0.9)+\arctanh(0.9)) = \tanh(2\arctanh(0.9))
+	\end{equation}
+	Since velocity parameters add linearly, we can show that:
+	\begin{equation}
+		\displaystyle\sum_{i=1}^{N-1}u_{i} = \arctanh(v_{N,1})
+	\end{equation}
+	Performing induction for {\em N} stars, the speed of the {\em Nth} star with respect to the first star is:
+	\begin{equation}
+	 	v_{N,1} = \tanh\left(\displaystyle\sum_{i=1}^{N-1}u_{i}\right)= \tanh[(N-1)\times\arctanh(0.9)]
+	\end{equation} 
+\end{document}
