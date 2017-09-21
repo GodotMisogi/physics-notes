@@ -272,7 +272,7 @@
 		A_{\theta} = \pdv{f}{\theta} = \pdv{f}{x}\pdv{x}{\theta} + \pdv{f}{y}\pdv{y}{\theta} = 1,\\
 		\oint\limits_{C = x^2 + y^2} \mathbf A \cdot \dd{\mathbf s} = \int_0^{2\pi}\dd{\theta} = 2\pi 
 	\end{gather*}
-	The reason why $\mathbf A$ is not a pure gauge mode is because $f$ is singular at the origin, making it non-differentiable at that point. 
+	The reason why $\mathbf A$ is not a pure gauge mode is because $f$ is singular at the origin, making it non-differentiable at that point. It is also a non-removable singularity, so no analytic continuation can be performed.
 \end{chapter2}
 
 \begin{chapter2}[Pure electric or magnetic fields]
@@ -299,7 +299,7 @@
 	\begin{gather*}
 		\mathbf e \cdot \mathbf e = \bqty{\frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r}}\cdot \bqty{\frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r}} \\
 		\implies \abs{\mathbf e}^2 = \frac{\abs{\mathbf p \times \mathbf J}^2}{m^2\abs{\alpha}^2} - 2\pqty{\frac{\hat{\mathbf r} \cdot \mathbf p \times \mathbf J}{m\abs{\alpha}}} + 1 \\
-		= \frac{p^2 J^2}{m^2\abs{\alpha}^2}- 2\pqty{\frac{J^2}{m\abs{\alpha}r}} + 1,\;\;J^2 = \mathbf r \times \mathbf p \cdot \mathbf J\\
+		= \frac{p^2 J^2}{m^2\abs{\alpha}^2}- 2\pqty{\frac{J^2}{m\abs{\alpha}r}} + 1,\;\;J^2 = \pqty{\mathbf r \times \mathbf p} \cdot \mathbf J\\
 		= 1 + \frac{2EJ^2}{m\abs{\alpha}^2}, \;\; E = \frac{p^2}{2m} - \frac{\abs{\alpha}}{r}
 	\end{gather*}
 	\stepcounter{subpart2}
@@ -308,6 +308,11 @@
 		\mathbf e \cdot \mathbf r = \frac{\mathbf r \cdot \mathbf p \times \mathbf J}{m\abs{\alpha}} - \mathbf r \cdot \hat{\mathbf r} \\
 		er\cos\theta =  \frac{J^2}{m\abs{\alpha}} - r \\
 		\implies r(\theta) = \frac{J^2/m\abs{\alpha}}{1+ e\cos\theta}
+	\end{gather*}
+	\stepcounter{subpart2}
+	\begin{gather*}
+		(\alph{subpart2}) \hspace{10 pt}
+		E = \frac{p^2}{2m} - \frac{\abs{\alpha}}{r} - \frac{\abs{\beta}}{r^2}
 	\end{gather*}
 \end{chapter2}
 

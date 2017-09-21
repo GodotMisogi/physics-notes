@@ -1,0 +1,70 @@
+% T. Padmanabhan Solutions Manual
+
+\documentclass{report}
+\usepackage[paperwidth=6in, paperheight=8in, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage{concmath}
+\usepackage[T1]{fontenc}
+
+%MF mode dpdfezzz is for 8000dpi
+\pdfpkmode{dpdfezzz}
+\pdfpkresolution=8000
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{tensor}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage[none]{hyphenat}
+\usepackage{tkz-euclide}
+\usepackage{tikz}
+
+\usepackage{etoolbox} % provides \patchcmd macro
+\makeatletter % modify the "headings" page style
+\patchcmd{\ps@headings}{{\slshape\rightmark}\hfil\thepage}{\thepage\hfil}{}{}
+\makeatother
+\pagestyle{headings}  % load the (re-defined) "headings" page style (default: "plain")
+
+\usetikzlibrary{calc,arrows}
+\usetkzobj{all}
+\DeclareMathOperator{\arctanh}{arctanh}
+\theoremstyle{definition}
+
+\usetikzlibrary{decorations.markings}
+
+\usepackage{color}
+\definecolor{mygrey}{gray}{0.1}
+\color{mygrey}
+
+\begin{document}
+
+\title{Solutions to \\ Quantum Mechanics and Path Integrals \\ by Richard P. Feynman and Albert R. Hibbs }
+
+\author{Arjit Seth}
+\date{}
+
+\maketitle
+
+\newtheorem{chapter2}{Problem}
+\newcounter{subpart2}[chapter2]
+
+\chapter{The Quantum-Mechanical Law of Motion}
+
+\begin{chapter2}
+	\begin{gather*}
+		S = \int_0^T \pqty{\frac{m}{2}}\pqty{\dot{x}^2 - \omega^2 x^2} \dd{x} = \int_0^T L(x, \dot{x})\,\dd{t} \\
+		\dv{t}\pqty{\pdv{L}{\dot x}} - \pdv{L}{x} = 0 \implies \ddot{x} = -\omega^2 x \\
+		x(t) = Ae^{i\omega t} + Be^{-i\omega t} \\
+		x_a = A + B,\;\; x_b = Ae^{i\omega T} + Be^{-i\omega T} \\
+		\implies A = \frac{x_a}{2} + i\pqty{\frac{x_a \cos\omega T - x_b}{2\sin\omega T}},\; B = A^* \\
+		S_{free} = \frac{m}{2}\dot{x}x\Big|_0^T + \int_0^T \frac{1}{2}m\omega^2x^2 \dd{x} \\
+		\dot{x}_a = i\omega\pqty{A - B}, \;\; \dot{x}_b = i\omega\pqty{Ae^{i\omega T} - Be^{-i\omega T}}\\
+		S = \frac{m}{2}\abs{\dot{x}_b x_b - \dot{x}_a x_a} \\
+		= \frac{m\omega i}{2}\bqty{\qty{\frac{x_a x_b}{2}\pqty{2i\sin \omega T} + i\pqty{\frac{x_a x_b \cos\omega T - x_b^2}{2\sin\omega T}}\pqty{2\cos\omega T}} - i\pqty{\frac{x_a^2 \cos\omega T - x_b x_a}{\sin\omega T}}} \\
+		= \frac{m\omega}{4\sin\omega T}\bqty{2\pqty{x_b^2 + x_a^2} \cos\omega T - x_b x_a \pqty{2 + 2\pqty{\sin^2 \omega T + \cos^2 \omega T}}} \\
+		= \frac{m\omega}{2\sin\omega T}\bqty{\pqty{x_b^2 + x_a^2}\cos\omega T - 2x_b x_a}
+	\end{gather*}
+\end{chapter2}
+
+\end{document}

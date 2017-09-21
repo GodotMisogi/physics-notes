@@ -678,6 +678,15 @@
 	
 \end{chapter13}
 
+\newtheorem{chapter14}{Problem}
+\newcounter{subpart14}[chapter14]
+\chapter{Gauge fields and gauge theory}
+
+\newtheorem{chapter15}{Problem}
+\newcounter{subpart15}[chapter15]
+\chapter{Discrete transformations}
+
+
 \newtheorem{chapter16}{Problem}
 \newcounter{subpart16}[chapter16]
 \chapter{Propagators and Green's functions}
@@ -782,7 +791,8 @@
 	The Fourier transform of $G^+_{\mathbf k}(\mathbf x)$ with a damping factor is:
 	\begin{gather*}
 		\tilde G^+_{\mathbf k}(\mathbf q) = \int_{-\infty}^{\infty} -\frac{e^{i\pqty{\abs{\mathbf k} + i\epsilon}\abs{\mathbf x}}}{4\pi\abs{\mathbf x}}e^{-i\bf q\cdot x}\,\dd^3{\bf x} = -\frac{1}{2}\int_{-1}^{1}\int_0^{\infty}{\abs{\mathbf x}e^{-i\pqty{\abs{\mathbf q}\cos\theta -\abs{\mathbf k} - i\epsilon}\abs{\mathbf x}}} \dd{\abs{\mathbf x}}\dd\pqty{\cos\theta} \\
-		= \frac{i}{2\abs{\mathbf q}}\int_{-\infty}^{\infty} \bqty{e^{i\abs{\mathbf q}\abs{\mathbf x}}- e^{-i\abs{\mathbf q}\abs{\mathbf x}}}e^{i\pqty{\abs{\mathbf k} + i\epsilon}\abs{\mathbf x}} \dd{\abs{\mathbf x}}
+		= \frac{i}{2\abs{\mathbf q}}\int_{0}^{\infty} \bqty{e^{i\abs{\mathbf q}\abs{\mathbf x}}- e^{-i\abs{\mathbf q}\abs{\mathbf x}}}e^{i\pqty{\abs{\mathbf k} + i\epsilon}\abs{\mathbf x}} \dd{\abs{\mathbf x}} \\
+		= \frac{1}{2\abs{\bf q}}\bqty{\frac{1}{\pqty{\abs{\bf k} + \abs{\bf q} + i\epsilon}}- \frac{1}{ \pqty{\abs{\bf k} - \abs{\bf q} + i\epsilon}}}
 	\end{gather*}
 \end{chapter16}
 
