@@ -1,7 +1,7 @@
 % T. Padmanabhan Solutions Manual
 
 \documentclass{report}
-\usepackage[paperwidth=6in, paperheight=8in, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage[paperwidth=16cm, paperheight=21cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
 \usepackage{concmath}
 \usepackage[T1]{fontenc}
 
@@ -17,10 +17,14 @@
 \usepackage{physics}
 \usepackage{cancel}
 \usepackage[none]{hyphenat}
-
+\usepackage{enumitem}
 
 \DeclareMathOperator{\arctanh}{arctanh}
-\theoremstyle{definition}
+
+\newlist{subquests}{enumerate}{2}
+\setlist[subquests, 1]{label = \textbf{\arabic*.}}
+\setlist[subquests, 2]{label = (\alph*)}
+
 
 \begin{document}
 
@@ -31,12 +35,11 @@
 
 \maketitle
 
-\newtheorem{chapter1}{Problem}
-\newcounter{subpart1}[chapter1]
-
 \chapter{Special relativity}
 
-\begin{chapter1}[Light clocks]
+
+\begin{subquests}
+	\item \emph{Light clocks.}
 	Perpendicular:
 	\begin{gather*}
 		ct' = \sqrt{c^2 - v^2}t \\
@@ -49,9 +52,8 @@
 		L'\frac{2c}{c^2 - v^2}  = \gamma\frac{2L}{c} \\
 		L' = \frac{1-v^2/c^2}{\sqrt{1-v^2/c^2}} = \frac{L}{\gamma} \\
 	\end{gather*}
-\end{chapter1}
 
-\begin{chapter1}[Superluminal motion]
+	\item \emph{Superluminal motion.}
 	\begin{gather*}
 		\Delta t' = t_2' - t_1' \\
 		t_1' - t_1 \approx \frac{v}{c}\Delta t \cos\theta \\
@@ -59,53 +61,53 @@
 		\Delta t' = \Delta t\pqty{1-(v/c)\cos\theta} \\
 		v_{app} = v\Delta t \sin\theta = \frac{v\sin\theta}{1-(v/c)\cos\theta}
 	\end{gather*}
-\end{chapter1}
 
-\begin{chapter1}[The strange world of four-vectors]
-	\stepcounter{subpart1}
-	\begin{gather*}
-		\pqty{a^i + b^i}\pqty{a_i + b_i} = a^i a_i + b^i b_i + 2\pqty{a^i b_i}
-	\end{gather*}
+	\item \emph{The strange world of four-vectors.}
+	\begin{subquests}
+		\item
+		\begin{gather*}
+			\pqty{a^i + b^i}\pqty{a_i + b_i} = a^i a_i + b^i b_i + 2\pqty{a^i b_i}
+		\end{gather*}
+	\end{subquests}
 
-\end{chapter1}
+	\item \emph{Focused to the front.}
+	\begin{subquests}
+		\item
+		Using a Lorentz transformation on the `time' component of the four-vector $k^a = (\omega,\omega{\bf n}/c)$:
+		\begin{gather*}
+			\omega_R = \gamma\pqty{\omega_L - \frac{\omega_Lv\cos\theta_L}{c}} = \gamma\omega_L\pqty{1-(v/c)\cos\theta_L} \\
+			\frac{\omega_R \cos\theta_R}{\omega_R} = \frac{\gamma\omega_L\pqty{\cos\theta_L   - (v/c)}}{\gamma\omega_L\pqty{1-(v/c)\cos\theta_L}} \\
+			\mu_R = \frac{\mu_L- (v/c)}{1-(v\mu_L/c)}
+		\end{gather*}
 
-\begin{chapter1}[Focused to the front]
-	\stepcounter{subpart1}
-	Using a Lorentz transformation on the `time' component of the four-vector $k^a = (\omega,\omega{\bf n}/c)$:
-	\begin{gather*}
-	(\alph{subpart1}) \hspace{10 pt}
-		\omega_R = \gamma\pqty{\omega_L - \frac{\omega_Lv\cos\theta_L}{c}} = \gamma\omega_L\pqty{1-(v/c)\cos\theta_L} \\
-		\frac{\omega_R \cos\theta_R}{\omega_R} = \frac{\gamma\omega_L\pqty{\cos\theta_L   - (v/c)}}{\gamma\omega_L\pqty{1-(v/c)\cos\theta_L}} \\
-		\mu_R = \frac{\mu_L- (v/c)}{1-(v\mu_L/c)}
-	\end{gather*}
-	\stepcounter{subpart1}
-	\stepcounter{subpart1}
-	\begin{gather*}
-		(\alph{subpart1})
-		\int\dd(\cos\theta)\dd{\phi} = -\int\sin\theta\dd{\theta}\dd{\phi} = -\dd{\Omega} \\
-		\dd(\cos\theta_R) = \bqty{\frac{(v/c)\bqty{\cos\theta_L - (v/c)}}{\bqty{1-(v/c)\cos\theta_L}^2} + \frac{1}{\bqty{1-(v/c)\cos\theta_L}}}\dd(\cos\theta_L) \\
-		\dd{\Omega'} = \frac{1}{\gamma^2}\frac{\dd{\Omega}}{\bqty{1-(v/c)\cos\theta}^2}
-	\end{gather*}
-	The energy is:
-	\begin{gather*}
-		\dd{\mathcal E'} = \hbar \omega = \gamma \dd{\mathcal E}\bqty{1-(v/c)\cos \theta} 
-	\end{gather*}
-	The time is:
-	\begin{gather*}
-		\dd{t'} = \gamma \dd{t}
-	\end{gather*}
-	Therefore, the energy emitted per unit time into a given solid angle in the rest frame is $(c=1)$:
-	\begin{gather*}
-		\pqty{\frac{\dd{\mathcal E'}}{\dd{t'}{\dd\Omega'}}}_{\mathrm{rest}} = \gamma^2\pqty{1-v\cos\theta}^3\pqty{\frac{\dd{\mathcal E}}{\dd{t}\dd{\Omega}}}_{\mathrm{lab}} \\
-		\pqty{\frac{\dd{\mathcal E}}{\dd{t}\dd{\Omega}}}_{\mathrm{lab}} = \frac{\pqty{1-v^2}^2}{\pqty{1-v\cos\theta}^3}\pqty{\frac{\dd{\mathcal E'}}{\dd{t'}{\dd\Omega'}}}_{\mathrm{rest}}
-	\end{gather*}
-	If the emission is isotropic, $\dd{\Omega} = \dd{\Omega'} = 4\pi$:
-	\begin{gather*}
-		\pqty{\dv{\mathcal E}{t}}_{\mathrm{lab}} = \dd{\Omega}\pqty{\frac{\dd{\mathcal E'}}{\dd{t'}{\dd\Omega'}}}_{\mathrm{rest}} = \pqty{\dv{\mathcal E'}{t'}}_{\mathrm{rest}}
-	\end{gather*}
-\end{chapter1}
+		\item
 
-\begin{chapter1}[Transformation of antisymmetric tensors]
+		\item
+		\begin{gather*}
+			\int\dd(\cos\theta)\dd{\phi} = -\int\sin\theta\dd{\theta}\dd{\phi} = -\dd{\Omega} \\
+			\dd(\cos\theta_R) = \bqty{\frac{(v/c)\bqty{\cos\theta_L - (v/c)}}{\bqty{1-(v/c)\cos\theta_L}^2} + \frac{1}{\bqty{1-(v/c)\cos\theta_L}}}\dd(\cos\theta_L) \\
+			\dd{\Omega'} = \frac{1}{\gamma^2}\frac{\dd{\Omega}}{\bqty{1-(v/c)\cos\theta}^2}
+		\end{gather*}
+		The energy is:
+		\begin{gather*}
+			\dd{\mathcal E'} = \hbar \omega = \gamma \dd{\mathcal E}\bqty{1-(v/c)\cos \theta} 
+		\end{gather*}
+		The time is:
+		\begin{gather*}
+			\dd{t'} = \gamma \dd{t}
+		\end{gather*}
+		Therefore, the energy emitted per unit time into a given solid angle in the rest frame is $(c=1)$:
+		\begin{gather*}
+			\pqty{\frac{\dd{\mathcal E'}}{\dd{t'}{\dd\Omega'}}}_{\mathrm{rest}} = \gamma^2\pqty{1-v\cos\theta}^3\pqty{\frac{\dd{\mathcal E}}{\dd{t}\dd{\Omega}}}_{\mathrm{lab}} \\
+			\pqty{\frac{\dd{\mathcal E}}{\dd{t}\dd{\Omega}}}_{\mathrm{lab}} = \frac{\pqty{1-v^2}^2}{\pqty{1-v\cos\theta}^3}\pqty{\frac{\dd{\mathcal E'}}{\dd{t'}{\dd\Omega'}}}_{\mathrm{rest}}
+		\end{gather*}
+		If the emission is isotropic, $\dd{\Omega} = \dd{\Omega'} = 4\pi$:
+		\begin{gather*}
+			\pqty{\dv{\mathcal E}{t}}_{\mathrm{lab}} = \dd{\Omega}\pqty{\frac{\dd{\mathcal E'}}{\dd{t'}{\dd\Omega'}}}_{\mathrm{rest}} = \pqty{\dv{\mathcal E'}{t'}}_{\mathrm{rest}}
+		\end{gather*}
+	\end{subquests}
+
+	\item \emph{Transformation of antisymmetric tensors.}
 	\begin{gather*}
 		A^{i'k'} = L^{k'}_k L^{i'}_i A^{ik} = \pdv{x^{k'}}{x^k}\pdv{x^{i'}}{x^i}A^{ik}
 	\end{gather*}
@@ -113,23 +115,17 @@
 	\begin{gather*}
 		A^{k'i'} = - A^{i'k'} ?
 	\end{gather*}
-\end{chapter1}
 
-\begin{chapter1}[Practice with completely antisymmetric tensors]
+	\item \emph{Practice with completely antisymmetric tensors.}
 
-\end{chapter1}
-
-\begin{chapter1}[A null curve in flat spacetime]
+	\item \emph{A null curve in flat spacetime.}
 	\begin{gather*}
 		\eta_{ij}x^{i}x^{j} = -t^2 + x^2 + y^2 + z^2 = 0 
 	\end{gather*}
-\end{chapter1}
 
-\begin{chapter1}[Shadows are Lorentz invariant]
-	
-\end{chapter1}
+	\item \emph{Shadows are Lorentz invariant.}
 
-\begin{chapter1}[Hamiltonian form of action - Newtonian mechanics]
+	\item \emph{Hamiltonian form of action - Newtonian mechanics.}
 	\begin{gather*}
 		\mathcal A = \int_{t_2}^{t_1}\dd{t}\,\bqty{p\dot q - H(p,q)} \\
 		\delta\mathcal A = \int_{t_2}^{t_1} \dd{t}\, \bqty{\dot q\,\delta p + p\,\delta\dot q  - \pdv{H}{p}\delta p - \pdv{H}{q}\delta q} = 0
@@ -143,40 +139,25 @@
 	\begin{gather*}
 		\dot q = \pdv{H}{p},\;\;\;\dot p = -\pdv{H}{q} 	
 	\end{gather*} 
-\end{chapter1}
-
-\begin{chapter1}[Hamiltonian form of action - special relativity]
+	
+	\item \emph{Hamiltonian form of action - special relativity.}
 	\begin{gather*}
 		\mathcal A = \int_{\lambda_1}^{\lambda_2} \dd{\lambda}\, \bqty{p_a \dot x^a - \frac{1}{2}C\pqty{\frac{H}{m} + m}}		
 	\end{gather*}
 
-\end{chapter1}
+	\item \emph{Hitting a mirror.}
 
-\begin{chapter1}[Hitting a mirror]
+	\item \emph{Photon-electron scattering.}
 
-\end{chapter1}
+	\item \emph{More practice with collisions.}
 
-\begin{chapter1}[Photon-electron scattering]
-	
-\end{chapter1}
+	\item \emph{Relativistic rocket.}
 
-\begin{chapter1}[More practice with collisions]
-	
-\end{chapter1}
+	\item \emph{Practice with equilibrium distribution functions.}
 
-\begin{chapter1}[Relativistic rocket]
-	
-\end{chapter1}
+	\item \emph{Projection effects.}
 
-\begin{chapter1}[Practice with equilibrium distribution functions]
-	
-\end{chapter1}
-
-\begin{chapter1}[Projection effects]
-	
-\end{chapter1}
-
-\begin{chapter1}[Relativistic virial theorem]
+	\item \emph{Relativistic virial theorem.}
 	The conservation law implies the following:
 	\begin{gather*}
 		\partial_0 T^{00}x^{\alpha}x^{\beta} = -\partial_{\mu}T^{0\mu}x^{\alpha}x^{\beta} \\
@@ -196,9 +177,8 @@
 		\int \dd^3{x}\;\partial^2_0 T^{00} x^{\alpha}x^{\beta} = \int \dd^3{x} \bqty{ \cancel{-\partial_{\mu}\pqty{\partial_0 T^{0\mu}x^{\alpha}x^{\beta} + T^{\mu\alpha}x^{\beta} + T^{\mu\beta}x^{\alpha}}} + 2 T^{\alpha\beta}} \\
 		\dv[2]{t}\int \dd^3{x}\;T^{00} x^{\alpha} x^{\beta} = 2 \int \dd^3{x}\; T^{\alpha\beta}
 	\end{gather*}
-\end{chapter1}
 
-\begin{chapter1}[Explicit computation of spin precession]
+	\item \emph{Explicit computation of spin precession.}
 	The four-velocity and four-acceleration are:
 	\begin{gather*}
 		u^i = \pqty{\gamma, \gamma \vec{v}} = \pqty{\gamma, -\gamma r\omega\sin\omega t, \gamma r\omega\cos\omega t, 0} \\
@@ -210,37 +190,27 @@
 		S^k a_k = -\gamma^2 \omega^2 \pqty{xS^x + yS^y} \\
 		\dv{t}\bqty{\pqty{yS^x - xS^y}} = -\omega\pqty{xS^x + yS^y}
 	\end{gather*}
-\end{chapter1}
 
-\begin{chapter1}[Little group of the Lorentz group]
-	
-\end{chapter1}
+	\item \emph{Little group of the Lorentz group.}
+\end{subquests}
 
-
-\newtheorem{chapter2}{Problem}
-\newcounter{subpart2}[chapter2]
 
 \chapter{Scalar and electromagnetic fields in special relativity}
-\begin{chapter2}[Measuring the $F^{a_b}$]
-	
-\end{chapter2}
 
-\begin{chapter2}[Schr\"odinger equation and gauge transformation]
+\begin{subquests}
+	\item \emph{Measuring the $F^{ab}$.}
+
+	\item \emph{Schr\"odinger equation and gauge transformation.}
 	The transformed Schr\"odinger equation is:
 	\begin{gather*}
 		i\hbar\partial_t \psi = \bqty{\frac{1}{2m}\bqty{\mathbf{P} - \frac{q}{c}\pqty{\mathbf A + \nabla f}}^2 + q\pqty{\phi + \partial_t f}}\psi
 	\end{gather*}
-\end{chapter2}
 
-\begin{chapter2}[Four-vectors leading to electric and magnetic fields]
-	
-\end{chapter2}
+	\item \emph{Four-vectors leading to electric and magnetic fields.}
 
-\begin{chapter2}[Hamiltonian form of action - charged particle]
-	
-\end{chapter2}
+	\item \emph{Hamiltonian form of action - charged particle.}
 
-\begin{chapter2}[Three-dimensional form of the Lorentz force]
+	\item \emph{Three-dimensional form of the Lorentz force.}
 	Using the electromagnetic tensor equation of motion:
 	\begin{gather*}
 		m\dv{u^i}{\tau} = q F^{ik}u_k \implies m\dv{u^i}{t} = q F^{i\alpha}u_{\alpha} \\
@@ -249,56 +219,56 @@
 		m\bqty{\frac{\mathbf v}{c^2}\cdot \dv{\mathbf v}{t} + \gamma \dv{\mathbf v}{t}} = q\pqty{\mathbf E + \mathbf v \times \mathbf B} \\
 		\implies \dv{\mathbf v}{t} = \frac{q}{m\gamma}\bqty{\mathbf E + \mathbf v \times \mathbf B - \frac{1}{c^2}\pqty{\mathbf E \cdot \mathbf v}\mathbf v}
 	\end{gather*}
-\end{chapter2}
 
-\begin{chapter2}[Pure gauge impostors]
+	\item \emph{Pure gauge impostors.}
 	This can be transformed into polar coordinates ($x = \cos\theta, y = \sin\theta $) and evaluated ($A_r$ is obviously 0):
 	\begin{gather*}
 		A_{\theta} = \pdv{f}{\theta} = \pdv{f}{x}\pdv{x}{\theta} + \pdv{f}{y}\pdv{y}{\theta} = 1,\\
 		\oint\limits_{C = x^2 + y^2} \mathbf A \cdot \dd{\mathbf s} = \int_0^{2\pi}\dd{\theta} = 2\pi 
 	\end{gather*}
 	The reason why $\mathbf A$ is not a pure gauge mode is because $f$ is singular at the origin, making it non-differentiable at that point. It is also a non-removable singularity, so no analytic continuation can be performed.
-\end{chapter2}
 
-\begin{chapter2}[Pure electric or magnetic fields]
+	\item \emph{Pure electric or magnetic fields.}
+
+	\item \emph{Elegant solution to non-relativistic Coulomb motion.}
+	\begin{subquests}
+		\item
+		Since the angular momentum is conserved, $\dd{\mathbf J}/\dd{t} = 0$:
+		\begin{gather*}
+			\dv{t}\pqty{\mathbf p \times \mathbf J} = \dv{\mathbf p}{t}\times \mathbf J + \cancel{\mathbf p \times \dv{\mathbf J}{t}} \\
+			f(r)\hat{\mathbf r} \times \mathbf r \times m\mathbf v = mf(r)\bqty{\mathbf r\pqty{\cancel{\hat{\mathbf r}\cdot \mathbf v}} - \mathbf v\pqty{\hat{\mathbf r}\cdot \mathbf r}} \\
+			= -mf(r)r\dv{\mathbf r}{t} = -mf(r)r^2 \dv{\hat{\mathbf r}}{t}  
+		\end{gather*}
+		Therefore, if $f(r)r^2 = -\abs{\alpha}$, then:
+		\begin{gather*}
+			\int \frac{1}{m\abs{\alpha}}\dv{t}\pqty{\mathbf p \times \mathbf J} \dd{t} = \int \dv{\hat{\mathbf r}}{t} \dd{t} \\
+			\implies \frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r} = \mathbf e
+		\end{gather*}
+		where $\mathbf e$ is a conserved vector, arising as a constant of the integration. \\
 		
-\end{chapter2}
+		\item Note that $\mathbf p$ and $\mathbf J$ are perpendicular:
+		\begin{gather*}
+			\mathbf e \cdot \mathbf e = \bqty{\frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r}}\cdot \bqty{\frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r}} \\
+			\implies \abs{\mathbf e}^2 = \frac{\abs{\mathbf p \times \mathbf J}^2}{m^2\abs{\alpha}^2} - 2\pqty{\frac{\hat{\mathbf r} \cdot \mathbf p \times \mathbf J}{m\abs{\alpha}}} + 1 \\
+			= \frac{p^2 J^2}{m^2\abs{\alpha}^2}- 2\pqty{\frac{J^2}{m\abs{\alpha}r}} + 1,\;\;J^2 = \pqty{\mathbf r \times \mathbf p} \cdot \mathbf J\\
+			= 1 + \frac{2EJ^2}{m\abs{\alpha}^2}, \;\; E = \frac{p^2}{2m} - \frac{\abs{\alpha}}{r}
+		\end{gather*}
+		
+		\item
+		\begin{gather*}
+			\mathbf e \cdot \mathbf r = \frac{\mathbf r \cdot \mathbf p \times \mathbf J}{m\abs{\alpha}} - \mathbf r \cdot \hat{\mathbf r} \\
+			er\cos\theta =  \frac{J^2}{m\abs{\alpha}} - r \\
+			\implies r(\theta) = \frac{J^2/m\abs{\alpha}}{1+ e\cos\theta}
+		\end{gather*}
 
-\begin{chapter2}[Elegant solution to non-relativistic Coulomb motion]
-	\stepcounter{subpart2}
-	Since the angular momentum is conserved, $\dd{\mathbf J}/\dd{t} = 0$:
-	\begin{gather*}
-		(\alph{subpart2}) \hspace{10 pt}
-		\dv{t}\pqty{\mathbf p \times \mathbf J} = \dv{\mathbf p}{t}\times \mathbf J + \cancel{\mathbf p \times \dv{\mathbf J}{t}} \\
-		f(r)\hat{\mathbf r} \times \mathbf r \times m\mathbf v = mf(r)\bqty{\mathbf r\pqty{\cancel{\hat{\mathbf r}\cdot \mathbf v}} - \mathbf v\pqty{\hat{\mathbf r}\cdot \mathbf r}} \\
-		= -mf(r)r\dv{\mathbf r}{t} = -mf(r)r^2 \dv{\hat{\mathbf r}}{t}  
-	\end{gather*}
-	Therefore, if $f(r)r^2 = -\abs{\alpha}$, then:
-	\begin{gather*}
-		\int \frac{1}{m\abs{\alpha}}\dv{t}\pqty{\mathbf p \times \mathbf J} \dd{t} = \int \dv{\hat{\mathbf r}}{t} \dd{t} \\
-		\implies \frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r} = \mathbf e
-	\end{gather*}
-	where $\mathbf e$ is a conserved vector, arising as a constant of the integration. \\
-	\stepcounter{subpart2}
-	(\alph{subpart2}) Note that $\mathbf p$ and $\mathbf J$ are perpendicular:
-	\begin{gather*}
-		\mathbf e \cdot \mathbf e = \bqty{\frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r}}\cdot \bqty{\frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r}} \\
-		\implies \abs{\mathbf e}^2 = \frac{\abs{\mathbf p \times \mathbf J}^2}{m^2\abs{\alpha}^2} - 2\pqty{\frac{\hat{\mathbf r} \cdot \mathbf p \times \mathbf J}{m\abs{\alpha}}} + 1 \\
-		= \frac{p^2 J^2}{m^2\abs{\alpha}^2}- 2\pqty{\frac{J^2}{m\abs{\alpha}r}} + 1,\;\;J^2 = \pqty{\mathbf r \times \mathbf p} \cdot \mathbf J\\
-		= 1 + \frac{2EJ^2}{m\abs{\alpha}^2}, \;\; E = \frac{p^2}{2m} - \frac{\abs{\alpha}}{r}
-	\end{gather*}
-	\stepcounter{subpart2}
-	\begin{gather*}
-		(\alph{subpart2}) \hspace{10 pt}
-		\mathbf e \cdot \mathbf r = \frac{\mathbf r \cdot \mathbf p \times \mathbf J}{m\abs{\alpha}} - \mathbf r \cdot \hat{\mathbf r} \\
-		er\cos\theta =  \frac{J^2}{m\abs{\alpha}} - r \\
-		\implies r(\theta) = \frac{J^2/m\abs{\alpha}}{1+ e\cos\theta}
-	\end{gather*}
-	\stepcounter{subpart2}
-	\begin{gather*}
-		(\alph{subpart2}) \hspace{10 pt}
-		E = \frac{p^2}{2m} - \frac{\abs{\alpha}}{r} - \frac{\abs{\beta}}{r^2}
-	\end{gather*}
-\end{chapter2}
+		\item
+		\begin{gather*}
+			E = \frac{p^2}{2m} - \frac{\abs{\alpha}}{r} - \frac{\abs{\beta}}{r^2}
+		\end{gather*}
+	\end{subquests}
+
+	\item \emph{More on uniformly accelerated motion.}
+	
+\end{subquests}
 
 \end{document}
