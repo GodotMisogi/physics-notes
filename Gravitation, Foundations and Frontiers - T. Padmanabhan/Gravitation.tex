@@ -17,25 +17,10 @@
 \usepackage{physics}
 \usepackage{cancel}
 \usepackage[none]{hyphenat}
-\usepackage{tkz-euclide}
-\usepackage{tikz}
 
-\usepackage{etoolbox} % provides \patchcmd macro
-\makeatletter % modify the "headings" page style
-\patchcmd{\ps@headings}{{\slshape\rightmark}\hfil\thepage}{\thepage\hfil}{}{}
-\makeatother
-\pagestyle{headings}  % load the (re-defined) "headings" page style (default: "plain")
 
-\usetikzlibrary{calc,arrows}
-\usetkzobj{all}
 \DeclareMathOperator{\arctanh}{arctanh}
 \theoremstyle{definition}
-
-\usetikzlibrary{decorations.markings}
-
-\usepackage{color}
-\definecolor{mygrey}{gray}{0.1}
-\color{mygrey}
 
 \begin{document}
 
