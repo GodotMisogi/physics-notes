@@ -1,9 +1,13 @@
 % T. Padmanabhan Solutions Manual
 
 \documentclass{report}
-\usepackage[paperwidth=16cm, paperheight=21cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage[paperwidth=18cm, paperheight=23.6 cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{%
+\markboth{\chaptername
+\ \thechapter.\ #1}{}}
 
 \usepackage{graphicx}
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
