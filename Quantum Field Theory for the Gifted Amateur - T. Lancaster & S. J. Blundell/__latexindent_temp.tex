@@ -53,14 +53,14 @@
 	\begin{subquests}
 		\item
 		\begin{gather*}
-			\fdv{H[f]}{f(z)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int G(x,y)[f(y) + \epsilon\delta(y-z)]\dd{y} - \int G(x,y)f(y)\dd{y}} = G(x,z)
+			\fdv{H[f]}{f(z)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int G(x,y)[f(y) + \epsilon\delta(y-z)]\dd{y} - \int G(x,y)f(y)\dd{y}} = G(x,z) \\
 	 	\end{gather*}
 
 	 	\item
 	 	\begin{align*}
 	 		\fdv{I[f^{\alpha}]}{x_0} & =  \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int \bqty{f(x) + \epsilon\delta(x - x_0)}^{\alpha} - f(x)^{\alpha} \dd{x}} = \alpha\bqty{f(x_0)}^{\alpha-1}\\ 
 	 		\therefore \fdv{I[f^3]}{f(x_0)} & =  \lim_{\epsilon \to 0} \frac{1}{\epsilon}\bqty{\int_{-1}^1 \bqty{f(x) + \epsilon\delta(x-x_0)}^3\dd{x} -\int_{-1}^1 [f(x)]^3 \dd{x}} = 3\bqty{f(x_0)}^2 \\
-			\frac{\delta^2 I[f^3]}{\delta f(x_0)\delta f(x_1)} & = \lim_{\epsilon \to 0} \frac{3}{\epsilon}\bqty{\bqty{f(x_0) + \epsilon\delta(x_0 - x_1)}^2 - f^2(x_0)} =  6f(x_1)
+			\frac{\delta^2 I[f^3]}{\delta f(x_0)\delta f(x_1)} & = \lim_{\epsilon \to 0} \frac{3}{\epsilon}\bqty{\bqty{f(x_0) + \epsilon\delta(x_0 - x_1)}^2 - f^2(x_0)} =  6f(x_1) \\
 	 	\end{align*}
 
 	 	\item
@@ -94,7 +94,7 @@
 	\begin{gather*}
 		Z_0[J] = \exp\pqty{-\frac{1}{2}\int\dd^4{x}\;\dd^4{y}\;J(x)\Delta(x-y)J(y)} \\
 		\fdv{Z_0[J]}{J(z_1)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\left[\exp\pqty{-\frac{1}{2}\int\dd^4{x}\;\dd^4{y}\;\bqty{J(x) + \epsilon \delta(x - z_1)}\Delta(x-y)\bqty{J(y) + \epsilon \delta(y - z_1)}} \right. \\
-		\left. - \exp\pqty{-\frac{1}{2}\int\dd^4{x}\;\dd^4{y}\;J(x)\Delta(x-y)J(y)}\right]
+		\left. - \exp\pqty{-\frac{1}{2}\int\dd^4{x}\;\dd^4{y}\;J(x)\Delta(x-y)J(y)}\right] \\
 	\end{gather*}
 \end{subquests}
 	
@@ -813,15 +813,13 @@
 \begin{subquests}
 	\item \emph{Green's function for a particle in an infinite potential well.}
 	\begin{subquests}
-		\item The Schr\"odinger equation is:
+		\item
 		\begin{gather*}
-			\mel{x}{\hat H}{\psi} = \mel{x}{\frac{\hat P^2}{2m} + \hat V(x)}{\psi} = \mel{x}{-\frac{\hbar^2}{2m}\dv[2]{x} + \hat V(x)}{\psi} = E\braket{x}{\psi}\\
-			\frac{\hbar^2}{2m}\dv[2]{\psi(x)}{x} + \bqty{E- V(x)}\psi(x) = 0\\
-			V = 0 \implies \psi(x) = Ae^{ikx} + Be^{-ikx},\quad k = \sqrt{2mE}/\hbar \\
-			\psi(0) = \psi(a) = 0 \rightarrow B = -A \\
-			\implies A \sin(ka) = 0 \implies k = \frac{n\pi}{a}\\
-			\int_{-a}^{a} \abs{\psi(x)}^2 \dd{x} = 1 \\
-			\therefore \psi_n(x) = \sqrt{\frac{2}{a}}\sin\pqty{\frac{n\pi x}{a}}
+			\mel{x}{\hat{H}}{\psi} = E\braket{x}{\psi} \\
+			\frac{\hbar^2}{2m}\dv[2]{\psi}{x} + E{\psi} = 0, \quad V = 0 \\
+			\psi_n(x) = Ae^{ikx} + Be^{-ikx},\quad k = \sqrt{2mE}/\hbar \\
+			\psi(0) = \psi(a) = 0 \implies B = -A \\
+			\psi_n(x) = \sqrt{\frac{2}{a}}\sin\pqty{\frac{n\pi x}{a}}
 		\end{gather*}
 
 		\item
@@ -830,9 +828,8 @@
 			G^+(n,t_2,t_1) = \theta(t_2 - t_1)e^{-iE_n\pqty{t_2 - t_1}}
 		\end{gather*}
 
-		\item Let $t_2 = t$ and $t_1 = 0$, then taking the Fourier transform with a damping factor:
+		\item
 		\begin{gather*}
-			G^+(n,\hbar\omega) = \int_{-\infty}^{\infty}\theta(t)e^{-iE_nt}e^{i\pqty{\hbar\omega + i\epsilon}t}\dd{t}\\ 
 			G^+(n,\hbar\omega) = \frac{i}{\hbar\omega - E_n + i\epsilon}
 		\end{gather*}
 	\end{subquests}
@@ -890,7 +887,7 @@
 		Taking the Fourier transform, rearranging and then taking its inverse:
 		\begin{align*}
 			-m(\omega^2 - \omega_0^2)G(\omega,t') & = \int_{-\infty}^{\infty} \delta(t - t') e^{i\omega t} \dd{t} = e^{i\omega t'} \\
-			G(t,t') & = -\frac{1}{m}\int_{-\infty}^{\infty}\frac{\dd{\omega}}{2\pi}\frac{e^{-i\omega(t-t')}}{\omega^2 - \omega_0^2}
+			G(t,t') & = -\frac{1}{m}\int_{-\infty}^{\infty}\frac{\dd{\omega}}{2\pi}\frac{e^{-i\omega(t-t')}}{\omega^2 - \omega_0^2} 
 		\end{align*}
 		Using the previous result to verify the solution:
 		\begin{align*}
@@ -928,6 +925,7 @@
 			& = \frac{1}{2\abs{\vb q}}\bqty{\frac{1}{\pqty{\abs{\vb k} + \abs{\vb q} + i\epsilon}}- \frac{1}{ \pqty{\abs{\vb k} - \abs{\vb q} + i\epsilon}}} \\ 
 			& = \frac{1}{\abs{\vb k}^2 - \abs{\vb q}^2 + 2\abs{\vb k}i\epsilon?}
 		\end{align*}
+
 		\item
 	\end{subquests}
 \end{subquests}
@@ -971,8 +969,8 @@
 			J_n(a) = (-2)^\frac{n}{2} \int_{-\infty}^{\infty}\exp\pqty{-\frac{ax^2}{2}} \dd{x} = (-2)^{\frac{n}{2}}\sqrt{\frac{2\pi}{a}} \\
 			\dv[k]{J_n(a)}{a} = (-2)^{\frac{n+1}{2}}\sqrt{\pi}\frac{(-1/2)!}{(-1/2-k)!}a^{-\frac{1}{2}-k} \\
 			\dv[n/2]{J_n(a)}{a} = (-2)^{\frac{n+1}{2}}\sqrt{\pi}\frac{\Gamma(1/2)}{\Gamma\pqty{\frac{1-n}{2}}} a^{-\pqty{\frac{n+1}{2}}} = \frac{i^n \pi}{\Gamma\pqty{\frac{1-n}{2}}}\pqty{\frac{2}{a}}^{\frac{n+1}{2}} \\
-			\expval{x^n} = \frac{\displaystyle\int_{-\infty}^{\infty}x^n\exp\pqty{-\frac{ax^2}{2}} \dd{x}}{\displaystyle\int_{-\infty}^{\infty}\exp\pqty{-\frac{ax^2}{2}} \dd{x}} = \frac{i^n \sqrt{\pi}}{\Gamma\pqty{\frac{1-n}{2}}}\pqty{\frac{2}{a}}^{n/2} \\
-			= \begin{cases} 0 & \forall\;n \in 2\mathbb{Z^+} + 1 \\ a^{-n/2}\displaystyle\prod_{k = 1}^{n/2}(2k-1) & \forall\;n \in 2\mathbb{Z^+} \end{cases} \\
+			\expval{x^n} = \frac{\int_{-\infty}^{\infty}x^n\exp\pqty{-\frac{ax^2}{2}} \dd{x}}{\int_{-\infty}^{\infty}\exp\pqty{-\frac{ax^2}{2}} \dd{x}} = \frac{i^n \sqrt{\pi}}{\Gamma\pqty{\frac{1-n}{2}}}\pqty{\frac{2}{a}}^{n/2} \\
+			= \begin{cases} 0 & \forall\;n \in 2\mathbb{Z^+} + 1 \\ a^{-n/2}\prod_{k = 1}^{n/2}(2k-1) & \forall\;n \in 2\mathbb{Z^+} \end{cases} \\
 			\therefore \dv[n]{J_{2n}(a)}{a} = \frac{1}{a^n}\prod_{k=1}^{n}(2k-1)
 		\end{gather*}
 	\end{subquests}

@@ -1,37 +1,39 @@
-% Lancaster et. al. Solutions Manual
+% Schutz Solutions Manual
 
 \documentclass{report}
-\usepackage[paperwidth=16cm, paperheight=21cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
-\usepackage{concmath}
-\usepackage[T1]{fontenc}
+\usepackage[paperwidth=18cm, paperheight=23.6 cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
-%MF mode dpdfezzz is for 8000dpi
-\pdfpkmode{dpdfezzz}
-\pdfpkresolution=8000
+\renewcommand{\chaptermark}[1]{%
+\markboth{\chaptername
+\ \thechapter.\ #1}{}}
 
 \usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{tensor}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
 \usepackage{physics}
 \usepackage{cancel}
 \usepackage{hyphenat}
-\usepackage{tikz}
-\usepackage{tkz-euclide}
 \usepackage{hyperref}
+\usepackage{pgfplots}
 \hypersetup{colorlinks, linkcolor = [RGB]{66, 128, 128}, urlcolor = red, linktocpage = true}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
 
 \usetikzlibrary{calc,arrows,decorations.markings}
 \usetkzobj{all}
 
+% \usepackage{charter}
+
 \DeclareMathOperator{\arctanh}{arctanh}
 
 \newlist{subquests}{enumerate}{3}
-\setlist[subquests, 1]{leftmargin =*, label = \textbf{\arabic*.}}
-\setlist[subquests, 2]{leftmargin =*, label = (\alph*)}
-\setlist[subquests, 3]{leftmargin =*, label = (\roman*)}
+\setlist[subquests, 1]{leftmargin=*, label = \textbf{\arabic*.}}
+\setlist[subquests, 2]{leftmargin=*, label = (\alph*)}
+\setlist[subquests, 3]{leftmargin=*, label = (\roman*)}
+
+\renewcommand{\familydefault}{\sfdefault}
 
 \begin{document}
 
@@ -1698,7 +1700,7 @@
 		\item	
 	\end{subquests}
 
-	\item {Playing with rank-two tensor.}
+	\item {Playing with rank-two tensors.}
 	\begin{subquests}
 		\item
 		\begin{subquests}
@@ -2066,7 +2068,7 @@
 	\item \emph{Thermodynamic relations as one-forms.}
 
 	\item \emph{Newton's second law from the stress-energy tensor.}
-	The expression is $T^{i\beta}_{\;\;\;,\beta} = 0, \;\; i = 1,2,3$. $T^{i0}$ corresponds to the momentum density, $T^{ij}$ corresponds to the flux of $i$ momentum across $j$ surface. Expanding:
+	The expression is $T^{i\beta}_{\;\;\;,\beta} = 0, \quad i = 1,2,3$. $T^{i0}$ corresponds to the momentum density, $T^{ij}$ corresponds to the flux of $i$ momentum across $j$ surface. Expanding:
 	\begin{gather*}
 		T^{i0}_{\;,0} + T^{ix}_{\;,x} + T^{iy}_{\;,y} + T^{iz}_{\;,z} = 0 \\
 		\int_{V} \div{T^i}\,\dd{V} = -\int_V T^{i0}_{\;,0}\,\dd{V}
@@ -2123,10 +2125,10 @@
 	\item \emph{Euler equation.}
 	For the four-vector $\vec U \stackrel{O}\longrightarrow (U^t, U^x, U^y, U^z)$, evaluating the expression in the frame $O$ that is not the MCRF yields:
 	\begin{gather*}
-		a^{\mu} = U^{\mu}_{\;\;,\beta}U^{\beta} = \pdv{U^{\mu}}{x^{\beta}}U^{\beta} \\
-		a^{i} = U^{i}_{\;\;,\beta}U^{\beta} = U^{i}_{\;\;,t}U^t + U^i_{\;\;,j}U^{j}
+		a^{\mu} = U^{\mu}_{,\beta}U^{\beta} = \pdv{U^{\mu}}{x^{\beta}}U^{\beta} \\
+		a^{i} = U^{i}_{,\beta}U^{\beta} = U^{i}_{,t}U^t + U^i_{,j}U^{j}
 	\end{gather*}
-	In the small-velocity approximation, the four-vector $\vec U \stackrel{O}\longrightarrow (1,v^x,v^y,v^z)$ is a reduction to the three-velocity ${\vb v}$. Therefore, $U^i_{\;\;,t}$ just denotes the time derivatives of the spatial velocity components, which is simply the three-acceleration $\dot{v}^i$. The rest of the terms describe the convective derivative $U^i_{\;\;,j}U^{j} = \pqty{{\vb v \cdot \nabla}}v^i$. The final expression is:
+	In the small-velocity approximation, the four-vector $\vec U \stackrel{O}\longrightarrow (1,v^x,v^y,v^z)$ is a reduction to the three-velocity ${\vb v}$. Therefore, $U^i_{,t}$ just denotes the time derivatives of the spatial velocity components, which is simply the three-acceleration $\dot{v}^i$. The rest of the terms describe the convective derivative $U^i_{,j}U^{j} = \pqty{{\vb v \cdot \nabla}}v^i$. The final expression is:
 	\begin{gather*}
 		a^i = \dot{v}^i + \pqty{{\vb v \cdot \nabla}}v^i = \frac{Dv^i}{Dt}
 	\end{gather*}
@@ -2138,7 +2140,7 @@
 	The difference between the coordinates $\bqty{V^t(t_2) - V^t(t_1)}$ is simply the differential change in time with respect to the time component of the four-vector multiplied by the time difference, expressible as $(\partial V^t/\partial t)\dd{t}$. Analogous arguments for the spatial displacements $\bqty{V^x(x_2) - V^x(x_1)}$ give the following expression:
 	\begin{gather*}
 		\int \pdv{V^t}{t} \dd{t}\dd{x}\dd{y}\dd{z} + \int \pdv{V^x}{x}\dd{x}\dd{t}\dd{y}\dd{z} + ... \\
-		= \int \pdv{V^{\alpha}}{x^{\alpha}} \dd^4{x} = \int V^{\alpha}_{\;\;,\alpha} \dd^4{x}
+		= \int \pdv{V^{\alpha}}{x^{\alpha}} \dd^4{x} = \int V^{\alpha}_{,\alpha} \dd^4{x}
 	\end{gather*}
 	This is simply the divergence of the vector through the four-volume, verifying Gauss' theorem.
 
@@ -2239,14 +2241,14 @@
 		\item		
 		The components are evaluated as follows:
 		\begin{gather*}
-			\div{{\vb E}} = 4\pi\rho \longrightarrow E^i_{\;\;,i} = 4\pi J^t = \bqty{F^{ti}_{\;\;\;,i}} \qq{and} \bqty{F^{tt}_{\;\;\;,t}} = 0 \longrightarrow F^{t\nu}_{\;\;\;,\nu} = 4\pi J^t \\
-			(\curl{{\vb B}})_x - \pdv{E^x}{t} = \pqty{\pdv{B^z}{y} - \pdv{B^y}{z}} - \pdv{E^x}{t} = 4\pi J^x = \bqty{F^{x\nu}_{\;\;\;,\nu}}
+			\div{{\vb E}} = 4\pi\rho \longrightarrow E^i_{,i} = 4\pi J^t = \bqty{F^{ti}_{,i}} \qq{and} \bqty{F^{tt}_{,t}} = 0 \longrightarrow F^{t\nu}_{,\nu} = 4\pi J^t \\
+			(\curl{{\vb B}})_x - \pdv{E^x}{t} = \pqty{\pdv{B^z}{y} - \pdv{B^y}{z}} - \pdv{E^x}{t} = 4\pi J^x = \bqty{F^{x\nu}_{,\nu}}
 		\end{gather*}
 		The curl expression can be simplified using the Levi-Civita tensor and converting the magnetic field vector into a one-form. The final expression can then be obtained via combination:
 		\begin{gather*}
-			4\pi J^t = \bqty{F^{t\nu}_{\;\;\;,\nu}} \\
-			\epsilon^{ijk}B_{j,k} - E^i_{\;\;,t} = 4\pi J^i = \bqty{F^{i\nu}_{\;\;\;,\nu}} \\
-			\bqty{F^{\mu\nu}_{\;\;\;,\nu} = 4\pi J^{\mu}}
+			4\pi J^t = \bqty{F^{t\nu}_{,\nu}} \\
+			\epsilon^{ijk}B_{j,k} - E^i_{\;\;,t} = 4\pi J^i = \bqty{F^{i\nu}_{,\nu}} \\
+			\bqty{F^{\mu\nu}_{,\nu} = 4\pi J^{\mu}}
 		\end{gather*}
 		
 		\item		
@@ -2518,7 +2520,7 @@
 % 
 % 		Evaluating the expressions:
 % 		\begin{gather*}
-% 			\nabla_{\beta}A^{\mu\nu} = A^{\mu\nu}_{\;\;\;\;,\beta} + A^{\alpha\nu}\Gamma^{\mu}_{\;\;\alpha\beta} + A^{\mu\alpha}\Gamma^{\nu}_{\;\;\alpha\beta} \\
+% 			\nabla_{\beta}A^{\mu\nu} = A^{\mu\nu}_{,\beta} + A^{\alpha\nu}\Gamma^{\mu}_{\;\;\alpha\beta} + A^{\mu\alpha}\Gamma^{\nu}_{\;\;\alpha\beta} \\
 % 			\nabla_{r}A^{rr} = 2r \\
 % 			\nabla_{\theta}A^{rr} = -r^2\pqty{\cos\theta + \sin\theta}\\
 % 			\nabla_{r}A^{r\theta} = 2\sin\theta \\

@@ -1,41 +1,33 @@
-% T. Padmanabhan Solutions Manual
+% Feynman and Hibbs - Quantum Mechanics and Path Integrals Solutions Manual
 
 \documentclass{report}
-\usepackage[paperwidth=6in, paperheight=8in, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
-\usepackage{concmath}
-\usepackage[T1]{fontenc}
+\usepackage[paperwidth=18cm, paperheight=23.6 cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
-%MF mode dpdfezzz is for 8000dpi
-\pdfpkmode{dpdfezzz}
-\pdfpkresolution=8000
+\renewcommand{\chaptermark}[1]{%
+\markboth{\chaptername
+\ \thechapter.\ #1}{}}
 
 \usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{tensor}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
 \usepackage{physics}
 \usepackage{cancel}
-\usepackage[none]{hyphenat}
-\usepackage{tkz-euclide}
-\usepackage{tikz}
+\usepackage{hyphenat}
+\usepackage{hyperref}
+\usepackage{pgfplots}
+\hypersetup{colorlinks, linkcolor = [RGB]{66, 128, 128}, urlcolor = red, linktocpage = true}
+\usepackage{enumitem}
 
-\usepackage{etoolbox} % provides \patchcmd macro
-\makeatletter % modify the "headings" page style
-\patchcmd{\ps@headings}{{\slshape\rightmark}\hfil\thepage}{\thepage\hfil}{}{}
-\makeatother
-\pagestyle{headings}  % load the (re-defined) "headings" page style (default: "plain")
+% \usepackage{charter}
 
-\usetikzlibrary{calc,arrows}
-\usetkzobj{all}
 \DeclareMathOperator{\arctanh}{arctanh}
-\theoremstyle{definition}
 
-\usetikzlibrary{decorations.markings}
+\newlist{subquests}{enumerate}{2}
+\setlist[subquests, 1]{leftmargin=*, label = \textbf{\arabic*.}}
+\setlist[subquests, 2]{leftmargin=*, label = (\alph*)}
 
-\usepackage{color}
-\definecolor{mygrey}{gray}{0.1}
-\color{mygrey}
+\renewcommand{\familydefault}{\sfdefault}
 
 \begin{document}
 
@@ -51,13 +43,14 @@
 
 \chapter{The Quantum-Mechanical Law of Motion}
 
-\begin{chapter2}
+\begin{subquests}
+	\item \emph{Action of the harmonic oscillator.}
 	\begin{gather*}
 		S = \int_0^T \pqty{\frac{m}{2}}\pqty{\dot{x}^2 - \omega^2 x^2} \dd{x} = \int_0^T L(x, \dot{x})\,\dd{t} \\
 		\dv{t}\pqty{\pdv{L}{\dot x}} - \pdv{L}{x} = 0 \implies \ddot{x} = -\omega^2 x \\
 		x(t) = Ae^{i\omega t} + Be^{-i\omega t} \\
 		x_a = A + B,\;\; x_b = Ae^{i\omega T} + Be^{-i\omega T} \\
-		\implies A = \frac{x_a}{2} + i\pqty{\frac{x_a \cos\omega T - x_b}{2\sin\omega T}},\; B = A^* \\
+		\implies A = \frac{x_a}{2} + i\pqty{\frac{x_a \cos\omega T - x_b}{2\sin\omega T}}, 	\quad B = A^* \\
 		S_{free} = \frac{m}{2}\dot{x}x\Big|_0^T + \int_0^T \frac{1}{2}m\omega^2x^2 \dd{x} \\
 		\dot{x}_a = i\omega\pqty{A - B}, \;\; \dot{x}_b = i\omega\pqty{Ae^{i\omega T} - Be^{-i\omega T}}\\
 		S = \frac{m}{2}\abs{\dot{x}_b x_b - \dot{x}_a x_a} \\
@@ -65,6 +58,6 @@
 		= \frac{m\omega}{4\sin\omega T}\bqty{2\pqty{x_b^2 + x_a^2} \cos\omega T - x_b x_a \pqty{2 + 2\pqty{\sin^2 \omega T + \cos^2 \omega T}}} \\
 		= \frac{m\omega}{2\sin\omega T}\bqty{\pqty{x_b^2 + x_a^2}\cos\omega T - 2x_b x_a}
 	\end{gather*}
-\end{chapter2}
+\end{subquests}
 
 \end{document}

@@ -1,22 +1,34 @@
-% Ramamurti Shankar Solutions Manual
+% Lancaster et. al. Solutions Manual
 
 \documentclass{report}
-\usepackage[paperwidth=6in, paperheight=8in, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
-\usepackage{concmath}
-\usepackage[T1]{fontenc}
+\usepackage[paperwidth=18cm, paperheight=23.6 cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
-%MF mode dpdfezzz is for 8000dpi
-\pdfpkmode{dpdfezzz}
-\pdfpkresolution=8000
+\renewcommand{\chaptermark}[1]{%
+\markboth{\chaptername
+\ \thechapter.\ #1}{}}
+
 
 \usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
 \usepackage{tensor}
 \usepackage{physics}
 \usepackage{cancel}
-\usepackage[none]{hyphenat}
+\usepackage{hyphenat}
+\usepackage{hyperref}
+\hypersetup{colorlinks, linkcolor = [RGB]{66, 128, 128}, urlcolor = red, linktocpage = true}
+\usepackage{enumitem}
+
+% \usepackage{charter}
+
+\DeclareMathOperator{\arctanh}{arctanh}
+
+\newlist{subquests}{enumerate}{2}
+\setlist[subquests, 1]{leftmargin=*, label = \textbf{\arabic*.}}
+\setlist[subquests, 2]{leftmargin=*, label = (\alph*)}
+
+\renewcommand{\familydefault}{\sfdefault}
 \usepackage{tkz-euclide}
 \usepackage{tikz}
 
@@ -28,7 +40,6 @@
 
 \usetikzlibrary{calc,arrows}
 \usetkzobj{all}
-\DeclareMathOperator{\arctanh}{arctanh}
 \theoremstyle{definition}
 
 \usetikzlibrary{decorations.markings}
@@ -42,7 +53,7 @@
 
 \begin{document}
 
-\title{Solutions to \\Principles of Quantum Mechanics \\ (Second Edition)\\ by Ramamurti Shankar}
+\title{Solutions to \\Principles of Quantum Mechanics (Second Edition)\\ by Ramamurti Shankar}
 \date{}
 \author{Arjit Seth}
 
@@ -251,7 +262,6 @@
 			\acomm{\omega}{\lambda\sigma} = \sum_i \pqty{\pdv{\omega}{q_i} \pdv{\lambda\sigma}{p_i} - \pdv{\omega}{p_i}\pdv{\lambda\sigma}{q_i}} = \\
 			\sum_i \sigma\pqty{\pdv{\omega}{q_i} \pdv{\lambda}{p_i} - \pdv{\omega}{p_i}\pdv{\lambda}{q_i}} + \sum_i \lambda\pqty{\pdv{\omega}{q_i} \pdv{\sigma}{p_i} - \pdv{\omega}{p_i}\pdv{\sigma}{q_i}} = \acomm{\omega}{\lambda}\sigma + \lambda\acomm{\omega}{\sigma}
 		\end{gather*}
-		\center{\rule{12cm}{0.4pt}}
 
 \end{chapter2}
 
@@ -318,7 +328,7 @@
 			\delta x_1 = \epsilon \pdv{p}{p_1} = \epsilon, \;\; \delta x_2 = \epsilon \pdv{p}{p_2} = \epsilon \\
 			\delta p_1 = -\epsilon \pdv{p}{x_1} = 0, \;\; \delta p_2 = -\epsilon \pdv{p}{x_2} = 0
 		\end{gather*}
-		Therefore, the generator $g(q,p) = p$. \\\\
+		Therefore, the generator $g(q,p) = p$.
 \end{chapter2}
 
 \begin{chapter2}\label{prob: 18}
@@ -698,9 +708,9 @@
 		\end{gather*}
 		The coefficients of the $x^{2n}$ terms are:
 		\begin{gather*}
-			x^0: \frac{(-1)^0}{0!}\bqty{1 - \frac{1}{2}\frac{i\hbar t}{m} + \frac{3}{8}\pqty{\frac{i \hbar t}{m}}^2 - \frac{5}{16}\pqty{\frac{i \hbar t}{m}}^3 + \frac{35}{128}\pqty{\frac{i \hbar t}{m}}^4 - ...}\frac{x^{2\times 0}}{2^0} \\
-			x^2: \frac{(-1)^1}{1!}\bqty{1 - \frac{3}{2}\pqty{\frac{i \hbar t}{m}} + \frac{15}{8}\pqty{\frac{i \hbar t}{m}}^2 - \frac{35}{16}\pqty{\frac{i \hbar t}{m}}^3 + ...}\frac{x^{2 \times 1}}{2^1} \\
-			x^4: \frac{(-1)^2}{2!}\bqty{1-\frac{5}{2}\pqty{\frac{i \hbar t}{m}} + \frac{35}{8}\pqty{\frac{i \hbar t}{m}}^2 - ...}\frac{x^{2 \times 2}}{2^2} \\
+			x^0\colon \frac{(-1)^0}{0!}\bqty{1 - \frac{1}{2}\frac{i\hbar t}{m} + \frac{3}{8}\pqty{\frac{i \hbar t}{m}}^2 - \frac{5}{16}\pqty{\frac{i \hbar t}{m}}^3 + \frac{35}{128}\pqty{\frac{i \hbar t}{m}}^4 - ...}\frac{x^{2\times 0}}{2^0} \\
+			x^2\colon \frac{(-1)^1}{1!}\bqty{1 - \frac{3}{2}\pqty{\frac{i \hbar t}{m}} + \frac{15}{8}\pqty{\frac{i \hbar t}{m}}^2 - \frac{35}{16}\pqty{\frac{i \hbar t}{m}}^3 + ...}\frac{x^{2 \times 1}}{2^1} \\
+			x^4\colon \frac{(-1)^2}{2!}\bqty{1-\frac{5}{2}\pqty{\frac{i \hbar t}{m}} + \frac{35}{8}\pqty{\frac{i \hbar t}{m}}^2 - ...}\frac{x^{2 \times 2}}{2^2} \\
 			\psi(x,t) = \frac{1}{\sqrt[4]{\pi}} \bqty{\sum_{n = 0}^{\infty} \frac{(-1)^n}{n!}\Bqty{1 - \pqty{n + \frac{1}{2}}\pqty{\frac{i \hbar t}{m}} + \frac{1}{2!}\pqty{n + \frac{1}{2}}\pqty{n + \frac{3}{2}}\pqty{\frac{i \hbar t}{m}}^2 - ...}\frac{x^{2n}}{2^n}} \\
 			\psi(x,t) = \frac{1}{\sqrt[4]\pi} \bqty{\sum_{n = 0}^{\infty} \frac{(-1)^n}{n!}\pqty{1 + \frac{i \hbar t}{m}}^{-n-\frac{1}{2}} \frac{x^{2n}}{2^n}} \\ = \frac{1}{\sqrt{\sqrt{\pi}\pqty{1 + \frac{i \hbar t}{m}}}} \exp\bqty{-\frac{x^2}{2\pqty{1 + \frac{i \hbar t}{m}}}}
 		\end{gather*}

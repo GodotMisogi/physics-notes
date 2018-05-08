@@ -11,7 +11,6 @@
 
 \usepackage{graphicx}
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
-\usepackage{tensor}
 \usepackage{physics}
 \usepackage{cancel}
 \usepackage{hyphenat}
@@ -40,7 +39,6 @@
 \maketitle
 
 \chapter{Special relativity}
-
 
 \begin{subquests}
 	\item \emph{Light clocks.}
@@ -179,13 +177,72 @@
 	\item \emph{Hamiltonian form of action - special relativity.}
 	\begin{align*}
 		\mathcal A & = \int_{\lambda_1}^{\lambda_2} \dd{\lambda}\, \bqty{p_a \dot x^a - \frac{1}{2}C\pqty{\frac{H}{mc^2} + mc^2}}, \quad H = \eta_{ab} p^a p^b \\
-		\delta\mathcal A & = \int_{\lambda_1}^{\lambda_2}\delta p_a \dot x^a + p_a \delta\dot x^a -\frac{1}{2}\bqty{\delta C\pqty{\frac{H}{m} + m} + C\pqty{\frac{2p^a\delta p_a}{mc^2}}} \dd{\lambda} = 0 \\
-		& = \int_{\lambda_1}^{\lambda_2} \bqty{\dot x^a - \frac{C}{m}p^a}\delta p_a - \dot p_a\delta x^a - \frac{1}{2}\bqty{\frac{H + m^2}{m}}\delta C \dd{\lambda} = 0, \quad c = 1
+		\delta\mathcal A & = \int_{\lambda_1}^{\lambda_2}\delta p_a \dot x^a + p_a \delta\dot x^a -\frac{1}{2}\bqty{\delta C\pqty{\frac{H}{mc^2} + mc^2} + C\pqty{\frac{2p^a\delta p_a}{mc^2}}} \dd{\lambda} = 0 \\
+		& = \int_{\lambda_1}^{\lambda_2} \bqty{\dot x^a - \frac{C}{mc^2}p^a}\delta p_a - \dot p_a\delta x^a - \frac{1}{2}\bqty{\frac{H + m^2c^4}{mc^2}}\delta C \dd{\lambda} = 0
 	\end{align*}
+	Each term must individually be zero, giving the equations of motion:
+	\begin{gather*}
+		\frac{p^a}{c^2} = \frac{m\dot x^a}{C} \implies \dot p_a = 0, \quad H = -m^2c^4 = \eta_{ab}p^a p^b, \quad C=1 
+	\end{gather*}
 
 	\item \emph{Hitting a mirror.}
+	Using $E = -p^i u_i$ in the rest frame of the mirror:
+	\begin{gather*}
+		\vec p_1 = \pqty{h\nu_1/c,\, h\nu_1\cos\theta/c,\, h\nu_1\sin\theta/c,\,0}, \quad \vec p_2 = \pqty{h\nu_2/c,\, -h\nu_2\cos\phi/c,\, h\nu_2\sin\phi/c,\,0} \\
+		E = -\frac{\gamma h \nu_1}{c}\bqty{1 + (v/c)\cos\theta}\pqty{c} = -\frac{\gamma h \nu_2}{c}\bqty{1 - (v/c)\cos\phi}\pqty{c} \\
+		\frac{\nu_2}{\nu_1} = \frac{c + v\cos\theta}{c - v\cos\phi}
+	\end{gather*}
 
 	\item \emph{Photon-electron scattering.}
+	\begin{subquests}
+		\item \emph{Compton scattering.}
+		The four-momentum components of the photon and electron before the collision are:
+		\begin{gather*}
+			\vec p_1 = (h\nu_i/c,\, h\nu_i/c,\, 0,\, 0), \quad \vec p_2 = (mc, 0, 0, 0)
+		\end{gather*}
+		The four-momentum components of the scattered photon and electron after the collision are:
+		\begin{gather*}
+			\vec p_3 = (h\nu_f/c,\,h\nu_f \cos\theta/c,\,h\nu_f \sin\theta/c,\,0), \quad \vec p_4 = (p^0, p^1, p^2, p^3)
+		\end{gather*}
+		Let $c=1$. Using the conservation of four-momentum, the four-momentum of the scattered electron is:
+		\begin{gather*}
+			\vec p_4 = \vec p_1 + \vec p_2 - \vec p_3 =
+			\begin{bmatrix}
+				h(\nu_i - \nu_f) + m \\
+				h\nu_i - h\nu_f \cos\theta \\
+				-h\nu_f \sin\theta \\
+				0
+			\end{bmatrix}
+		\end{gather*}
+		The four-momentum of a particle is $\vec p \cdot \vec p = -m^2$. Finding the magnitude of the scattered electron's four-momentum:
+		\begin{gather*}
+			{\vec p}_4 \cdot {\vec p}_4 =
+			\begin{bmatrix}
+				h(\nu_i - \nu_f) + m \\
+				h\nu_i - h\nu_f \cos\theta \\
+				-h\nu_f \sin\theta \\
+				0
+			\end{bmatrix} \cdot
+			\begin{bmatrix}
+				h(\nu_i - \nu_f) + m \\
+				h\nu_i - h\nu_f \cos\theta \\
+				-h\nu_f \sin\theta \\
+				0
+			\end{bmatrix} \\
+			= -(h(\nu_i - \nu_f) + m)^2 + (h\nu_i - h\nu_f \cos\theta)^2 + (-h\nu_f \sin\theta)^2 = -m^2
+		\end{gather*}
+		Expanding the expression and cancelling terms:
+		\begin{gather*}
+			-2h^2\nu_i \nu_f (1-\cos\theta) + 2hm(\nu_i - \nu_f) = 0
+		\end{gather*}
+		Rearranging the terms, the final expression for the wavelength shift in Compton scattering is:
+		\begin{gather*}
+			\lambda' - \lambda = \frac{h}{m}(1-\cos\theta), \quad \lambda' = \frac{1}{\nu_f}, \; \lambda = \frac{1}{\nu_i}
+		\end{gather*}
+
+		\item \emph{Inverse Compton scattering.}
+	\end{subquests}
+	
 
 	\item \emph{More practice with collisions.}
 
@@ -219,8 +276,8 @@
 	\item \emph{Explicit computation of spin precession.}
 	The four-velocity and four-acceleration are:
 	\begin{align*}
-		u^i = \pqty{\gamma, \gamma \vb v} = \pqty{\gamma, -\gamma r\omega\sin\omega t, \gamma r\omega\cos\omega t, 0} \\
-		a^i = \gamma\pqty{\dot{\gamma}, \dot{\gamma}\vb v + \dot{\vb v}\gamma} = -\gamma^2 \omega^2\pqty{0,x,y,0}
+		u^i & = \pqty{\gamma, \gamma \vb v} = \pqty{\gamma, -\gamma r\omega\sin\omega t, \gamma r\omega\cos\omega t, 0} \\
+		a^i & = \gamma\pqty{\dot{\gamma}, \dot{\gamma}\vb v + \dot{\vb v}\gamma} = -\gamma^2 \omega^2\pqty{0,x,y,0}
 	\end{align*}
 	Using the equation of motion for a moving particle with spin and separating the space and time components:
 	\begin{align*}
@@ -254,12 +311,16 @@
 		since $u_i u_j$ is symmetric and $F^{ij}$ and its dual are antisymmetric.
 
 		\item
+		\begin{align*}
+			u^a E^b - u^b E^a & = \pqty{F^{bi}u^a - F^{ai}u^b} u_i \\
+			\epsilon^{ab}_{\;\;\;cd} u^c B^d & = \frac{1}{2}\epsilon^{ab}_{\;\;\;cd}\epsilon^{di}_{\;\;\;jk}u^c u_i F^{jk}
+		\end{align*}
 	\end{subquests}
 
 	\item \emph{Hamiltonian form of action - charged particle.}
 	\begin{align*}
 		\mathcal A & = \int_{\lambda_1}^{\lambda_2} \bqty{P_a \dot x^a - \frac{1}{2}C\pqty{\frac{H}{mc^2} + mc^2}}, \quad H = \eta_{ij}\pqty{P^i - qA^i}\pqty{P^j - qA^j} \\
-		\delta\mathcal A & = \int_{\lambda_1}^{\lambda_2}\delta P_a \dot x^a + P_a \delta\dot x^a -\frac{1}{2}\bqty{\delta C\pqty{\frac{H}{m} + m} + C\pqty{\frac{\pqty{P^i - qA^i}\pqty{\delta P_i -q \delta A_j}}{mc^2}}} \dd{\lambda} = 0 
+		\delta\mathcal A & = \int_{\lambda_1}^{\lambda_2}\delta P_a \dot x^a + P_a \delta\dot x^a -\frac{1}{2}\bqty{\delta C\pqty{\frac{H}{mc^2} + mc^2} + C\pqty{\frac{2\pqty{P^i - qA^i}\pqty{\delta P_i -q \delta A_i}}{mc^2}}} \dd{\lambda} = 0
 	\end{align*}
 
 	\item \emph{Three-dimensional form of the Lorentz force.}
@@ -275,8 +336,8 @@
 	\item \emph{Pure gauge impostors.}
 	This can be transformed into polar coordinates ($x = \cos\theta, y = \sin\theta $) and evaluated ($A_r = 0$, obviously):
 	\begin{align*}
-		A_{\theta} = \pdv{f}{\theta} = \pdv{f}{x}\pdv{x}{\theta} + \pdv{f}{y}\pdv{y}{\theta} = 1,\\
-		\oint\limits_{C = x^2 + y^2} \mathbf A \cdot \dd{\mathbf s} = \int_0^{2\pi}\dd{\theta} = 2\pi 
+		A_{\theta} = \pdv{f}{\theta} & = \pdv{f}{x}\pdv{x}{\theta} + \pdv{f}{y}\pdv{y}{\theta} = 1,\\
+		\oint\limits_{C = x^2 + y^2} \mathbf A \cdot \dd{\mathbf s} & = \int_0^{2\pi}\dd{\theta} = 2\pi 
 	\end{align*}
 	The reason why $\mathbf A$ is not a pure gauge mode is because $f$ is singular at the origin, making it non-differentiable at that point. It is also a non-removable singularity, so no analytic continuation can be performed.
 
@@ -296,7 +357,7 @@
 			\int \frac{1}{m\abs{\alpha}}\dv{t}\pqty{\mathbf p \times \mathbf J} \dd{t} & = \int \dv{\hat{\mathbf r}}{t} \dd{t} \\
 			\implies \frac{\mathbf p \times \mathbf J}{m\abs{\alpha}} - \hat{\mathbf r} & = \mathbf e
 		\end{align*}
-		where $\mathbf e$ is a conserved vector, arising as a constant of the integration. \\
+		where $\mathbf e$ is a conserved vector independent of $t$, arising as a constant of the integration.
 		
 		\item Note that $\mathbf p$ and $\mathbf J$ are perpendicular:
 		\begin{align*}
@@ -331,7 +392,7 @@
 \begin{subquests}
 	\item \emph{Practice with metrics.}
 	\begin{subquests}
-		\item $x = 2\tan(\theta/2)\cos\phi, y = 2\tan(\theta/2)\sin\phi$. Since the coordinates are spherical:
+		\item $x = 2\tan(\theta/2)\cos\phi,\; y = 2\tan(\theta/2)\sin\phi$. Since the coordinates are spherical:
 		\begin{align*}
 			g_{ab} & = \eta_{ij}\pdv{X^i}{x^a}\pdv{X^j}{x^b}, \quad X^i = \theta,\,\phi,\; x^a = x,\,y, \;\eta_{ij} = \mqty[1 & 0 \\ 0 & \sin^2\theta]  \\
 			\pdv{\theta}{x^a} & = \pdv{x^a}\bqty{2\tan^{-1}\pqty{\frac{\sqrt{x^2 + y^2}}{2}}}, \quad \pdv{\phi}{x^a} = \pdv{x^a}\bqty{\tan^{-1}\pqty{y/x}} \\
@@ -342,6 +403,12 @@
 			g_{yy} & = \pqty{\pdv{\theta}{y}}^2 + \sin^2\theta\pqty{\pdv{\phi}{y}}^2 \\
 			& = \bqty{\cos^2(\theta/2)\sin^2\phi + \frac{\sin^2\theta\cos^2\phi}{4\sin^2{\theta/2}}}\cos^2(\theta/2) = \cos^4(\theta/2) \\
 			\therefore \dd{s}^2 & = \cos^4\pqty{\frac{\theta}{2}}\bqty{\dd x^2 + \dd y^2}
+		\end{align*}
+
+		\item $\phi = x,\; \theta = 2\tan^{-1}e^{-y}$.
+		\begin{align*}
+			g_{ab} & = \eta_{ij}\pdv{X^i}{x^a}\pdv{X^j}{x^b}, \quad X^i = \theta,\,\phi,\; x^a = x,\,y \\
+			\pdv{\theta}{x} & = 0,\;\pdv{\phi}{x} = 1,\;\pdv{\theta}{y} = -\frac{2}{e^{y} + e^{-y}} = -\sech y,\; \pdv{\phi}{y} = 0
 		\end{align*}
 	\end{subquests}
 \end{subquests}
