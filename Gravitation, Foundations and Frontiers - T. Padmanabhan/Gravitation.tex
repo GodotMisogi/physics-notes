@@ -177,8 +177,8 @@
 	\item \emph{Hamiltonian form of action - special relativity.}
 	\begin{align*}
 		\mathcal A & = \int_{\lambda_1}^{\lambda_2} \dd{\lambda}\, \bqty{p_a \dot x^a - \frac{1}{2}C\pqty{\frac{H}{mc^2} + mc^2}}, \quad H = \eta_{ab} p^a p^b \\
-		\delta\mathcal A & = \int_{\lambda_1}^{\lambda_2}\delta p_a \dot x^a + p_a \delta\dot x^a -\frac{1}{2}\bqty{\delta C\pqty{\frac{H}{mc^2} + mc^2} + C\pqty{\frac{2p^a\delta p_a}{mc^2}}} \dd{\lambda} = 0 \\
-		& = \int_{\lambda_1}^{\lambda_2} \bqty{\dot x^a - \frac{C}{mc^2}p^a}\delta p_a - \dot p_a\delta x^a - \frac{1}{2}\bqty{\frac{H + m^2c^4}{mc^2}}\delta C \dd{\lambda} = 0
+		\delta\mathcal A & = \int_{\lambda_1}^{\lambda_2} \dd{\lambda} \delta p_a \dot x^a + p_a \delta\dot x^a -\frac{1}{2}\bqty{\delta C\pqty{\frac{H}{mc^2} + mc^2} + C\pqty{\frac{2p^a\delta p_a}{mc^2}}} = 0 \\
+		& = \int_{\lambda_1}^{\lambda_2} \dd{\lambda} \bqty{\dot x^a - \frac{C}{mc^2}p^a}\delta p_a - \dot p_a\delta x^a - \frac{1}{2}\bqty{\frac{H + m^2c^4}{mc^2}}\delta C = 0
 	\end{align*}
 	Each term must individually be zero, giving the equations of motion:
 	\begin{gather*}
@@ -250,7 +250,11 @@
 
 	\item \emph{Practice with equilibrium distribution functions.}
 	\begin{subquests}
-		\item $n = u_i S^i$. Moving to the comoving frame of the centre of mass of the system with velocity $u^i$:
+		\item 		
+		\begin{align*}
+			S^a(x^i) = c \int \frac{\dd^3 \vb p}{E_{\vb p}} p^a \frac{2j+1}{h^3}\bqty{\exp\pqty{-\theta+\beta p^0} - \epsilon}^{-1}
+		\end{align*}
+		$n = u_i S^i$. Moving to the comoving frame of the centre of mass of the system with velocity $u^i$:
 		\begin{align*}
 			n & = -S^0 = c\int \frac{\dd^3 \vb p}{E_{\vb p}} p^0 \frac{2j+1}{h^3}\bqty{\exp\pqty{-\theta+\beta p^0} - \epsilon}^{-1} \\
 		\end{align*}
@@ -308,7 +312,7 @@
 	\item \emph{Schr\"odinger equation and gauge transformation.}
 	The transformed Schr\"odinger equation is:
 	\begin{align*}
-		i\hbar\partial_t \psi = \bqty{\frac{1}{2m}\bqty{\mathbf{P} - \frac{q}{c}\pqty{\mathbf A + \nabla f}}^2 + q\pqty{\phi + \partial_t f}}\psi
+		i\hbar\pdv{\psi}{t} = \bqty{\frac{1}{2m}\bqty{\mathbf{P} - \frac{q}{c}\pqty{\mathbf A + \nabla f}}^2 + q\pqty{\phi + \pdv{f}{t}}\psi
 	\end{align*}
 
 	\item \emph{Four-vectors leading to electric and magnetic fields.}
