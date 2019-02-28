@@ -1,0 +1,91 @@
+% Lancaster et. al. Solutions Manual
+
+\documentclass{report}
+\usepackage[paperwidth=18cm, paperheight=23.6 cm, top = 20mm, bottom = 18mm, left=10mm, right = 10mm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{%
+\markboth{\chaptername
+\ \thechapter.\ #1}{}}
+
+\usepackage{graphicx}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{hyphenat}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{pgfplots}
+\hypersetup{colorlinks, linkcolor = [RGB]{66, 128, 128}, urlcolor = red, linktocpage = true}
+\usepackage{enumitem}
+
+% \usepackage{charter}
+
+\DeclareMathOperator{\arctanh}{arctanh}
+\newtheorem{Exercise}{Exercise}
+
+\newlist{subquests}{enumerate}{2}
+\setlist[subquests, 1]{leftmargin=*, label = \textbf{\arabic*.}}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+\title{Solutions to \\ Quantum Field Theory for the Gifted Amateur \\ by Tom Lancaster \& Stephen J. Blundell}
+
+\author{Arjit Seth}
+
+\maketitle
+
+\chapter{From Particles to Fields}
+\begin{subquests}
+    \item WRONG \begin{align*}
+        G(x_2;x_1) & = \int d^D\vb{y} \int d^D\vb{p} \int d^D\vb{p} \frac{\theta(x_2^0 - y^0)\theta(y^0 - x_1^0)}{(2\pi)^{2D}}F(\abs{\vb p}, x_2^0 - y^0)F(\abs{\vb p}, y^0 - x_1^0)e^{i\vb p \cdot(\vb x_2 - \vb y + \vb y - \vb x_1)} \\
+        & = \int d^D\vb{y} \int d^D\vb{p} \frac{\theta(x_2^0 - x_1^0)}{(2\pi)^{D}}F(\abs{\vb p}, x_2^0 - x_1^0)e^{i\vb p \cdot(\vb x_2 - \vb x_1)}
+    \end{align*}
+    \item Substituting into Eq. 1.7: \begin{gather*}
+        % N(t) \exp\pqty{\frac{im}{2}\frac{\abs{\vb x_2 - \vb x_1}^2}{x_2^0 - x_1^0}} = \int d^D\vb{y} N(t_2)N(t_1) \exp\bqty{\frac{im}{2}\pqty{\frac{\abs{\vb x_2 - \vb y}^2}{x_2^0 - y^0}+ \frac{\abs{\vb y - \vb x_1}^2}{y^0 - x_1^0}}}
+        \int_{-\infty}^{\infty} d^D \vb x\;N(t)\exp\pqty{\frac{im\abs{\vb x}^2}{2t} - i\vb p \cdot \vb x} = \theta(t)e^{-if(\abs {\vb p})t}
+    \end{gather*}
+    This is a product of $D$ Gaussian integrals, with the evaluation of each $n$th component in Cartesian coordinates:
+    \begin{gather*}
+        \int dx_n\, \exp\pqty{\frac{imx_n^2}{2t} - ip_nx_n} = \sqrt{\frac{2\pi i t}{m}}\exp\pqty{-\frac{ip_n^2t}{2m}}
+    \end{gather*}
+    Which is the propagator in momentum space, and gives the final result:
+    \begin{gather*}
+        N(t) = \theta(t)\pqty{\frac{m}{2\pi i t}}^{D/2}e^{i\psi t}, \quad \psi = \pqty{\frac{\abs{\vb p}^2}{2m} - f(\abs{\vb p})}t
+    \end{gather*}
+    \item Unsatisfactorily, substitute the solution into $i\partial_t \hat A = [\hat A, \hat H]$.
+    \begin{align*}
+        i\partial_t\bqty{e^{i\hat H t}\hat A(0)e^{-i\hat H t}} & = e^{i\hat H t}\hat A(0)e^{-i\hat H t}\hat H - \hat H e^{i\hat H t}\hat A(0)e^{-i\hat H t} \\
+        - \hat He^{i\hat H t}\hat A(0)e^{-i\hat H t} + e^{i\hat H t}\hat A(0)e^{-i\hat H t}\hat H & = e^{i\hat H t}\hat A(0)e^{-i\hat H t}\hat H - \hat H e^{i\hat H t}\hat A(0)e^{-i\hat H t}
+    \end{align*}
+    This works because the operator commutes with its exponential, easily verified by the Taylor series representation.
+    \item The ground state wavefunction of the quantum harmonic oscillator is: \begin{gather*}
+        \phi_0(\vb x) = \pqty{\frac{m\omega}{\pi}}^{1/4}\exp(-\frac{m\omega\abs{\vb x}^2}{2})
+    \end{gather*}
+    The action for the harmonic oscillator in Euclidean time with the boundary conditions $(\vb 0, 0),\; (\vb x, -it)$ is
+    \begin{align*}
+        S & = \frac{m\omega\abs{\vb x}^2\cos -i\omega t}{2\sin -i\omega t} = -\frac{m\omega\abs{\vb x}^2 \cosh \omega t}{2\sinh \omega t}\\ 
+        \phi_0(\vb x) & \propto \int \mathcal Dq \lim_{t_E \to \infty}\exp\bqty{-\frac{m\omega\abs{\vb x}^2 \cosh \omega t}{2\sinh \omega t}}
+    \end{align*}
+    The limit is evaluated via L'H\^{o}pital's rule, giving $\phi_0(\vb x) \propto \exp(m\omega\abs{\vb x}^2/2)$.
+    \item The propagator for the harmonic oscillator of frequency $\omega_0$ coupled to an external source is:
+    \begin{gather*}
+        G^{J}(x_2;x_1) = A[\vb x_{cl}]\exp\pqty{iS}, \quad S = \int dt\, \frac{m}{2}\bqty{\dot x^2 - \omega^2 x^2 + J(t)x}
+    \end{gather*}
+    The equation of motion is:
+    \begin{align*}
+        \ddot x + \omega^2 x = \frac{J(t)}{m}
+    \end{align*}
+    Solving this with boundary conditions $(x_i, t_i),\, (x_f,t_f)$:
+    \begin{align*}
+        x(t) = Ae^{i\omega t} + Be^{-i\omega t} + \int_{t_i}^{t_f} dt' \,G(t,t')\frac{J(t')}{m}, \quad G(t,t') = -\int_{-\infty}^{\infty} \frac{d\omega}{2\pi}\frac{e^{-i\omega(t - t')}}{\omega^2 - \omega_0^2}
+    \end{align*}
+    where $G(t,t')$ is the Green function, evaluated as follows:
+    \begin{align*}
+        G(t,t') = 
+    \end{align*}
+\end{subquests}
+\end{document}
